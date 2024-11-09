@@ -1,30 +1,30 @@
 {
-    "0": {
-        "keyword": "accused",
-        "length": 7
-    },
-    "85": {
-        "keyword": "accused",
-        "length": 7
-    },
-    "9": {
-        "keyword": "acquitted",
-        "length": 9
-    },
-    "19": {
-        "keyword": "charge withdrawn/charge dismissed",
-        "length": 33
-    },
-    "36": {
+    "3225": {
         "keyword": "charge",
         "length": 6
     },
-    "53": {
-        "keyword": "dangerous offender applications",
-        "length": 31
+    "5015": {
+        "keyword": "counsel",
+        "length": 7
     },
-    "94": {
-        "keyword": "dangerous offender applications",
-        "length": 31
+    "5039": {
+        "keyword": "counsel",
+        "length": 7
+    },
+    "445": {
+        "keyword": "defendant",
+        "length": 9
+    },
+    "2083": {
+        "keyword": "defendant",
+        "length": 9
+    },
+    "2761": {
+        "keyword": "defendant",
+        "length": 9
+    },
+    "2884": {
+        "keyword": "defendant",
+        "length": 9
     }
 }

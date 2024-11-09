@@ -9,6 +9,9 @@ CORS(app)
 
 saved_text = []  # Store all characters for other purposes
 
+subject = ""
+segment = ""
+
 # Load the first JSON file containing the recognized keywords and definitions
 with open('./data/termsGlossary.json', 'r') as f:
     raw_keywords_data = json.load(f)
@@ -43,11 +46,46 @@ def generate_words(input_file):
         with open('./data/matches.json', 'w') as f:
             json.dump(matches_data, f, indent=4)
 
-    # Streaming each character of the text one by one (this can be adapted as needed)
+
     for char in text:
-        saved_text.append(char)  # Save the character
-        yield f"{char}"
-        time.sleep(0.06)  # Sleep for 0.06 seconds to control the rate (1000 characters per minute)
+        segment += char  # Add character to the current segment
+        if char in {'.', '?', '!', '\n', ')'}:  # Check if the character is a delimiter
+            saved_text.append(segment)  # Append the complete segment to saved_text
+            yield segment  # Send the full segment
+            segment = ""  # Reset the segment collector
+        time.sleep(0.01)  # Control the rate (1000 characters per minute)
+
+    # Append any remaining segment after the loop ends
+    if segment:
+        saved_text.append(segment)
+        yield segment
+
+
+
+
+
+class Actor:
+    def __init__(self, name, speech, descriptors):
+        self.name = name
+        self.speech = speech
+        self.descriptors = descriptors
+
+def indentify_word():
+    if not segment:
+        #empty boi
+        return
+
+    only_letters = ''.join([char for char in segment if char.isalpha()])
+    if(only_letters.isupper()):
+        #This is a subject/person
+        subject = only_letters
+        pass
+    elif(segment[0] == "(" and segment[-1] == ")"):
+        #non verbal information
+        pass
+
+
+    pass
 
 
 @app.route('/saved_text')
