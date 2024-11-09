@@ -1,14 +1,10 @@
-import openai
 from flask import Flask, request, jsonify, app
-from secure import OPENAI_API_KEY
 from gpt_interaction import get_legal_explanation_and_usage
 import os
 import json
-import time
-
 
 CACHE_FILE = './data/termsUsageExplanations.json'
-
+DEFINITION_FILE = './data/termsGlossary.json'
 
 def load_cache():
     if os.path.exists(CACHE_FILE):
@@ -39,6 +35,15 @@ def get_cached_data(term):
         return cached_entry[term]
     return None
 
+def get_definition(term):
+    #open the file for reading
+    with open(DEFINITION_FILE, 'r') as file:
+        #check if the term is in the file
+        if term in file:
+            #return the definition
+            entry = file[term]
+            return entry['definition']
+
 
 
 @app.route('/api/get_gpt_response', methods=['POST'])
@@ -50,7 +55,8 @@ def get_gpt_response(term):
             return jsonify({"message": termJSON}), 200
         #term not in cache
         #generate gpt response
-        new_entry = json.dumps(get_legal_explanation_and_usage(term))
+        definition = get_definition(term)
+        new_entry = json.dumps(get_legal_explanation_and_usage(term, definition))
         #add to cache
         cache = load_cache()
         cache[term] = new_entry
@@ -60,7 +66,6 @@ def get_gpt_response(term):
     except:
         return jsonify({"message": "Couldn't open file"}), 400
 
-
 @app.route('/api/clear_cache', methods=['POST'])
 def clear_cache():
     try:
@@ -69,3 +74,5 @@ def clear_cache():
         return jsonify({"message": "Cache cleared"}), 200
     except:
         return jsonify({"message": "Couldn't open file"}), 400
+    
+@app.route('/api/get_definition', methods=['GET'])
