@@ -1,26 +1,30 @@
 {
     "0": {
-        "keyword": "Accused",
+        "keyword": "accused",
         "length": 7
     },
     "85": {
-        "keyword": "Accused",
+        "keyword": "accused",
         "length": 7
     },
     "9": {
-        "keyword": "Acquitted",
+        "keyword": "acquitted",
         "length": 9
     },
     "19": {
-        "keyword": "Charge withdrawn/charge dismissed",
+        "keyword": "charge withdrawn/charge dismissed",
         "length": 33
     },
+    "36": {
+        "keyword": "charge",
+        "length": 6
+    },
     "53": {
-        "keyword": "Dangerous offender applications",
+        "keyword": "dangerous offender applications",
         "length": 31
     },
     "94": {
-        "keyword": "Dangerous offender applications",
+        "keyword": "dangerous offender applications",
         "length": 31
     }
 }

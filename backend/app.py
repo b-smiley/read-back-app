@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, Response
+from flask import Flask, jsonify, Response, request
 from flask_cors import CORS
-import time
 import input_parser  # Import input_parser.py
 
 app = Flask(__name__)
@@ -10,10 +9,19 @@ CORS(app)
 def hello():
     return jsonify(message="Hello from Flask!")
 
+
+#?file=filename.txt  -- for passing in a specific text file to read.
 @app.route('/stream')
 def stream():
-    # Use the generate_words function from input_parser.py
-    return Response(input_parser.generate_words(), mimetype='text/event-stream')
+    # Get the file parameter from the query
+    file_path = request.args.get('file')
+    
+    # Check if file parameter is provided
+    if not file_path:
+        return "Error: No file provided. Please provide a file parameter.", 400
+
+    # Pass the file path to generate_words
+    return Response(input_parser.generate_words(file_path), mimetype='text/event-stream')
 
 @app.route('/saved_text')
 def saved_text_route():
