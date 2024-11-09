@@ -1,110 +1,123 @@
 {
-    "Accused": {
+    "accused": {
         "definition": "A person charged with a crime."
     },
-    "Acquitted": {
+    "acquitted": {
         "definition": "A finding of 'not guilty' in a criminal case."
     },
-    "Adjournment": {
+    "adjournment": {
         "definition": "Postponement of a court hearing to another date."
     },
-    "Administrative offence": {
+    "administrative offence": {
         "definition": "A non-criminal offence that regulates conduct in the public interest, such as securities regulations. Regulatory offences are often dealt with at administrative tribunals and not in a court setting."
     },
-    "Brydges duty counsel": {
+    "brydges duty counsel": {
         "definition": "Any individual who has been arrested or detained has the right to be informed by the police of the availability of legal aid and duty counsel. A toll-free line is generally available for immediate advice."
     },
-    "Charge": {
+    "charge": {
         "definition": "A formal accusation of an offence as a preliminary step to prosecution."
     },
-    "Charge withdrawn/charge dismissed": {
+    "charge withdrawn": {
         "definition": "Withdrawal of a formal accusation of an offence."
     },
-    "Claimant": {
+    "charge dismissed": {
+        "definition": "Withdrawal of a formal accusation of an offence."
+    },
+    "claimant": {
         "definition": "A person who brings a civil action in a court of law."
     },
-    "Clinic model": {
+    "clinic model": {
         "definition": "Where an office is set up to provide free legal services to eligible applicants. Services may range from advice, summary/brief services, to full service."
     },
-    "Conditional sentence": {
+    "conditional sentence": {
         "definition": "Where a sentence of imprisonment of less than two years is given, the judge may order that the sentence be served in the community subject to conditions."
     },
-    "Conflict": {
+    "conflict": {
         "definition": "Two opposing parties in a matter cannot be represented by the same lawyer or the same office. One of the parties must seek independent representation."
     },
-    "Counsel": {
+    "counsel": {
         "definition": "A lawyer, especially in a court proceeding."
     },
-    "Crown attorney/prosecutor": {
+    "crown attorney": {
         "definition": "A legal officer who represents the federal, provincial or municipal government in proceedings. In Canada, federal prosecutors handle immigration and drug-related charges; provincial prosecutors handle criminal cases and some provincial offences."
     },
-    "Dangerous offender applications": {
+    "prosecutor": {
+        "definition": "A legal officer who represents the federal, provincial or municipal government in proceedings. In Canada, federal prosecutors handle immigration and drug-related charges; provincial prosecutors handle criminal cases and some provincial offences."
+    },
+    "dangerous offender applications": {
         "definition": "A person who is convicted of a serious personal injury offence, as provided in the Criminal Code of Canada, and who is, after an assessment, found by a court to be at high risk to reoffend and whose risk cannot be managed in the community. Dangerous offenders are sentenced to detention in a federal prison for an indefinite period."
     },
-    "Defendant": {
+    "defendant": {
         "definition": "A person accused in a criminal proceeding or sued in a civil proceeding."
     },
-    "Disbursements": {
+    "disbursements": {
         "definition": "Out-of-pocket expenses paid out by legal aid for applications, affidavits, etc. on behalf of the client. Legal aid plans attempt to have these costs reimbursed by the client where possible."
     },
-    "Disclosure": {
+    "disclosure": {
         "definition": "Making information and documents known and available to a party in a proceeding. There are disclosure requirements placed on parties by law or court rules."
     },
-    "Duty counsel": {
+    "duty counsel": {
         "definition": "Refers to legal services provided without charge by a lawyer, generally provided at court or place of detention. Most often, the services provided are brief, and pertain to provision of summary advice or representation at a first appearance or plea court."
     },
-    "Eligibility": {
+    "eligibility": {
         "definition": "Legal aid is available to low-income individuals who qualify for a certificate to assist with paying the cost of a lawyer. Applicants who apply for legal aid must disclose financial information pertaining to income and assets to ascertain whether they meet the low-income requirements. Other criteria are considered in addition to financial eligibility, such as possibility of incarceration and loss of employment."
     },
-    "Expanded duty counsel": {
+    "expanded duty counsel": {
         "definition": "Provides the services of a regular duty counsel, but is also able to continue representing the accused in less serious matters until the case is resolved."
     },
-    "Full service": {
+    "full service": {
         "definition": "A legal aid certificate, referral, or other authorization for legal aid that contains the full range of legal services that could include preliminary stages of a criminal matter through to a trial."
     },
-    "Interim release": {
+    "interim release": {
         "definition": "Release of the accused between committal for trial and the trial's completion (bail)."
     },
-    "Judicare model": {
+    "judicare model": {
         "definition": "This model provides eligible accused persons with a legal aid certificate that can be taken to a private lawyer who is willing to act on the basis of legal aid for that particular case. The lawyer is remunerated according to the tariff rate, and is subject to a cap on the number of hours that may be billed."
     },
-    "Law lines/legal call centre": {
+    "law lines": {
         "definition": "A toll-free line for individuals requiring information about a legal matter."
     },
-    "Mandatory minimum sentences": {
+    "legal call centre": {
+        "definition": "A toll-free line for individuals requiring information about a legal matter."
+    },
+    "mandatory minimum sentences": {
         "definition": "Offences under the Criminal Code for which a sentence of imprisonment must be imposed. Many of these offences have a compulsory period of time an offender must serve in prison."
     },
-    "Mixed system": {
+    "mixed system": {
         "definition": "This legal aid model provides for legal representation, which may be either assigned to a salaried in-house lawyer or referred to a private legal practitioner."
     },
-    "Plea court": {
+    "plea court": {
         "definition": "The court where a declaration is made by a person accused of a crime as to whether he or she is guilty or not guilty of the charge."
     },
-    "Pro bono": {
+    "pro bono": {
         "definition": "Legal services provided by a lawyer free of charge."
     },
-    "Probation": {
+    "probation": {
         "definition": "Authorization for a person to be released into the community, subject to conditions listed in the order."
     },
-    "Recidivism": {
+    "recidivism": {
         "definition": "Tendency to relapse into previous behaviour, especially a pattern of criminal behaviour."
     },
-    "Rowbotham": {
+    "rowbotham": {
         "definition": "The Ontario Court of Appeal, in R. v. Rowbotham, found that sections 7 and 11(d) of the Canadian Charter of Rights and Freedoms create a right to counsel if necessary for a fair trial, and that the court can order federally funded counsel in situations where an accused cannot afford counsel but is not eligible for legal aid, and where the proceedings are complex and there is a likelihood of imprisonment."
     },
-    "Stay of proceedings": {
+    "stay of proceedings": {
         "definition": "An order suspending a legal proceeding."
     },
-    "Summary service/brief service": {
+    "summary service": {
         "definition": "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client."
     },
-    "Tariff": {
+    "brief service": {
+        "definition": "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client."
+    },
+    "tariff": {
         "definition": "A schedule of fees to be charged for various legal services."
     },
-    "Unit of service": {
+    "unit of service": {
         "definition": "This count measures the number of units of service rather than the number of persons assisted and is mutually exclusive of all summary service and duty counsel service."
     },
-    "Unrepresented accused (self-represented)": {
+    "unrepresented accused (self-represented)": {
         "definition": "One who appears in court without legal representation."
     }
 }
+
