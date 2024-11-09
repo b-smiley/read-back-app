@@ -1,23 +1,27 @@
 import openai
 from flask import Flask, request, jsonify
+from secure import OPENAI_API_KEY
 
 app = Flask(__name__)
 
 # Set your API key here
-openai.api_key = "your_openai_api_key_here"
+openai.api_key = OPENAI_API_KEY
 
-# Route to handle GPT requests
-@app.route('/gpt_request', methods=['POST'])
-def gpt_request():
+# Route to handle GPT requests for legal terms
+@app.route('/explain_legal_term', methods=['POST'])
+def define_legal_term():
     data = request.json
-    prompt = data.get("prompt", "")
-    max_tokens = data.get("max_tokens", 100)  # Default max tokens
+    legal_term = data.get("term", "")
+    definition = data.get("definition", "")
     
-    # Define any additional model specifications here
+    # Prepare the prompt with term and definition
+    prompt = f"Term: {legal_term}\nDefinition: {definition}\n\nProvide an explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] Usage: [example sentence here]"
+
+    # Define model specifications for the request
     model_specifications = {
-        "model": "text-davinci-003",  # You can choose different models like gpt-3.5-turbo
-        "temperature": 0.7,  # Control randomness: 0 for deterministic responses, up to 1 for varied
-        "max_tokens": max_tokens,  # Control response length
+        "model": "text-davinci-003",
+        "temperature": 0.7,
+        "max_tokens": 150,  # Adjust as needed for adequate explanation and example
     }
     
     try:
@@ -26,9 +30,17 @@ def gpt_request():
             **model_specifications
         )
         
-        # Extract response text
+        # Process the response to extract explanation and usage
         response_text = response.choices[0].text.strip()
-        return jsonify({"response": response_text})
+        # Example parse assuming response follows a pattern
+        # Look for keywords like "Explanation:" and "Usage:" (or similar patterns in GPT output)
+        explanation, usage = response_text.split("\n")[0], response_text.split("\n")[1]
+        
+        # Return JSON formatted response
+        return jsonify({
+            "explanation": explanation.replace("Explanation: ", "").strip(),
+            "usage": usage.replace("Usage: ", "").strip()
+        })
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
