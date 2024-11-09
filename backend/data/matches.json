@@ -1,0 +1,26 @@
+{
+    "0": {
+        "keyword": "Accused",
+        "length": 7
+    },
+    "85": {
+        "keyword": "Accused",
+        "length": 7
+    },
+    "9": {
+        "keyword": "Acquitted",
+        "length": 9
+    },
+    "19": {
+        "keyword": "Charge withdrawn/charge dismissed",
+        "length": 33
+    },
+    "53": {
+        "keyword": "Dangerous offender applications",
+        "length": 31
+    },
+    "94": {
+        "keyword": "Dangerous offender applications",
+        "length": 31
+    }
+}
