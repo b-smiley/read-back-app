@@ -12,6 +12,41 @@ saved_text = []  # Store all characters for other purposes
 subject = ""
 segment = ""
 
+
+
+
+class Segment:
+    def __init__(self, content, index):
+        self.content = content
+        self.index = index
+        self.length = len(content)
+    
+    def to_dict(self):
+        return {
+            'content': self.content,
+            'index': self.index,
+            'length': self.length
+        }
+
+class Actor:
+    def __init__(self, name, speech, index, descriptors):
+        self.name = name
+        self.speech = Segment(speech, index)
+        self.descriptors = descriptors
+    
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'speech': self.speech.to_dict(),
+            'descriptors': self.descriptors
+        }
+
+
+actors = []
+current_actor = None
+
+
+
 # Load the first JSON file containing the recognized keywords and definitions
 with open('./data/termsGlossary.json', 'r') as f:
     raw_keywords_data = json.load(f)
@@ -59,28 +94,18 @@ def generate_words(input_file):
         curr_index += 1
         time.sleep(0.01)  # Control the rate (6000 characters per minute)
 
+    identify_word(start_index)
     # Append any remaining segment after the loop ends
     if segment:
         saved_text.append(segment)
         yield segment
+    
+    for actor in actors:
+        if actor.speech is None:
+            actors.remove(actor)
 
-
-
-class Segment:
-    def __init__(self, content, index):
-        self.content = content
-        self.index = index
-        self.length = len(content)
-
-class Actor:
-    def __init__(self, name, speech, index, descriptors):
-        self.name = name
-        self.speech = Segment(speech,index)
-        self.descriptors = descriptors
-
-
-actors = []
-current_actor = None
+    with open('actors.json', 'w') as f:
+        json.dump([actor.to_dict() for actor in actors], f, indent=4)
 
 
 
@@ -107,7 +132,7 @@ def identify_word(index):
         current_actor.descriptor.append(segment)
         return
     else:
-        current_actor.speech.append(segment)
+        current_actor.speech.append(Segment(segment, index))
 
 
 
