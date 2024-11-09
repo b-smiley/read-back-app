@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # Secure API keys
-backend\secure.py
+backend/secure.py
