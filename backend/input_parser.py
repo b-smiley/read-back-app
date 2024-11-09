@@ -46,14 +46,18 @@ def generate_words(input_file):
         with open('./data/matches.json', 'w') as f:
             json.dump(matches_data, f, indent=4)
 
-
+    start_index = 0
+    curr_index = 1
     for char in text:
         segment += char  # Add character to the current segment
         if char in {'.', '?', '!', '\n', ')'}:  # Check if the character is a delimiter
             saved_text.append(segment)  # Append the complete segment to saved_text
             yield segment  # Send the full segment
             segment = ""  # Reset the segment collector
-        time.sleep(0.01)  # Control the rate (1000 characters per minute)
+            identify_word(start_index)
+            start_index = curr_index
+        curr_index += 1
+        time.sleep(0.01)  # Control the rate (6000 characters per minute)
 
     # Append any remaining segment after the loop ends
     if segment:
@@ -62,15 +66,25 @@ def generate_words(input_file):
 
 
 
-
+class Segment:
+    def __init__(self, content, index):
+        self.content = content
+        self.index = index
+        self.length = len(content)
 
 class Actor:
-    def __init__(self, name, speech, descriptors):
+    def __init__(self, name, speech, index, descriptors):
         self.name = name
-        self.speech = speech
+        self.speech = Segment(speech,index)
         self.descriptors = descriptors
 
-def indentify_word():
+
+actors = []
+current_actor = None
+
+
+
+def identify_word(index):
     if not segment:
         #empty boi
         return
@@ -79,13 +93,22 @@ def indentify_word():
     if(only_letters.isupper()):
         #This is a subject/person
         subject = only_letters
-        pass
+
+        for actor in actors:
+            if subject in actor.name:
+                current_actor = actor
+                break
+            current_actor = Actor("", subject, index, "")
+            actors.append(current_actor)
+        
+        return
+
     elif(segment[0] == "(" and segment[-1] == ")"):
-        #non verbal information
-        pass
+        current_actor.descriptor.append(segment)
+        return
+    else:
+        current_actor.speech.append(segment)
 
-
-    pass
 
 
 @app.route('/saved_text')
