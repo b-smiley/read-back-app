@@ -131,3 +131,4 @@ dist
 
 # Secure API keys
 backend/secure.py
+backend/__pycache__
