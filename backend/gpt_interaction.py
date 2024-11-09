@@ -1,6 +1,6 @@
 import openai
 from secure import OPENAI_API_KEY
-print(openai.__version__)
+# print(openai.__version__)
 
 # Set your API key here
 openai.api_key = OPENAI_API_KEY
@@ -50,5 +50,5 @@ def get_legal_explanation_and_usage(term, definition):
     except Exception as e:
         return {"error": str(e)}
 
-json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
-print(json)
+# json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
+# print(json)

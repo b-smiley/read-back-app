@@ -7,16 +7,16 @@ CACHE_FILE = './data/termsUsageExplanations.json'
 DEFINITION_FILE = './data/termsGlossary.json'
 
 def load_cache():
+    # load the cache on the machine
     if os.path.exists(CACHE_FILE):
         with open(CACHE_FILE, 'r') as file:
             return json.load(file)
     return {}
 
 def save_cache(cache_data):
+    # update the cache with a new version
     with open(CACHE_FILE, 'w') as file:
         json.dump(cache_data, file)
-
-
 
 def get_cached_data(term):
     '''
@@ -40,7 +40,11 @@ def get_definition(term):
     Returns a string containing the definition of an inputted term
 
     args:
-        term (str): the legal term to be returned. MUST be in cache
+        term (str): the legal term to be returned.
+
+    returns:
+        str: the definition of the inputted term
+        None: the term was not found
     '''
     #open the file for reading
     with open(DEFINITION_FILE, 'r') as file:
@@ -49,16 +53,16 @@ def get_definition(term):
             #return the definition
             entry = file[term]
             return entry['definition']
+        return None
 
 
-
-@app.route('/api/get_gpt_response', methods=['POST'])
+@app.route('/api/get_gpt_response/<string:term>', methods=['GET'])
 def get_gpt_response(term):
     try:
         termJSON = get_cached_data(term)
         if termJSON:
             #term in cache
-            return jsonify({"message": termJSON}), 200
+            return jsonify({"source":"cache","data": termJSON}), 200
         #term not in cache
         #generate gpt response
         definition = get_definition(term)
@@ -68,7 +72,7 @@ def get_gpt_response(term):
         cache[term] = new_entry
         #save updated cache
         save_cache(cache)
-        return jsonify({"message": new_entry}), 200
+        return jsonify({"source":"request", "data": new_entry}), 200
     except:
         return jsonify({"message": "Couldn't open file"}), 400
 
@@ -82,8 +86,11 @@ def clear_cache():
         return jsonify({"message": "Couldn't open file"}), 400
     
 
-@app.route('/api/get_definition_api', methods=['GET'])
+@app.route('/api/get_definition_api/<string:term>', methods=['GET'])
 def get_definition_api(term):
     try:
         definition = get_definition(term)
-        return(definition)
+        return jsonify({"message": "bruh"}), 200
+    except:
+        return jsonify({"message": "Couldn't open file"}), 400
+        
