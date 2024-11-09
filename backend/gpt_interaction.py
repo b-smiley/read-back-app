@@ -1,5 +1,6 @@
 import openai
 from secure import OPENAI_API_KEY
+print(openai.__version__)
 
 # Set your API key here
 openai.api_key = OPENAI_API_KEY
@@ -17,29 +18,28 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide an explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] Usage: [example sentence here]"
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] Usage: [example sentence here]"
 
-    # Define model specifications for the request
-    model_specifications = {
-        "model": "text-davinci-003",
-        "temperature": 0.7,
-        "max_tokens": 150  # Adjust as needed for explanation and example
-    }
-    
     try:
-        # Send the prompt to the OpenAI API
-        response = openai.Completion.create(
-            prompt=prompt,
-            **model_specifications
-        )
+        # Use the new chat method with gpt-3.5-turbo
+        completion = openai.chat.completions.create(
+			model="gpt-3.5-turbo",
+			messages=[
+				{"role": "system", "content": "You are a helpful assistant."},
+				{
+					"role": "user",
+					"content": prompt
+				}
+			],
+			max_tokens=200
+		)
         
         # Process the response to extract explanation and usage
-        response_text = response.choices[0].text.strip()
-        # Example parse assuming response follows a pattern
-        # Parsing logic can be adjusted based on response structure
-        lines = response_text.split("\n")
-        explanation = lines[0].replace("Explanation: ", "").strip()
-        usage = lines[1].replace("Usage: ", "").strip()
+        response = completion.choices[0].message.content
+        # Split the input into lines and extract each section
+        lines = response.split("\n")
+        explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
+        usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
         # Return the parsed response as a dictionary
         return {
@@ -49,3 +49,6 @@ def get_legal_explanation_and_usage(term, definition):
     
     except Exception as e:
         return {"error": str(e)}
+
+json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
+print(json)
