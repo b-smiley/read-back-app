@@ -36,6 +36,12 @@ def get_cached_data(term):
     return None
 
 def get_definition(term):
+    '''
+    Returns a string containing the definition of an inputted term
+
+    args:
+        term (str): the legal term to be returned. MUST be in cache
+    '''
     #open the file for reading
     with open(DEFINITION_FILE, 'r') as file:
         #check if the term is in the file
@@ -75,4 +81,9 @@ def clear_cache():
     except:
         return jsonify({"message": "Couldn't open file"}), 400
     
-@app.route('/api/get_definition', methods=['GET'])
+
+@app.route('/api/get_definition_api', methods=['GET'])
+def get_definition_api(term):
+    try:
+        definition = get_definition(term)
+        return(definition)
