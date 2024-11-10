@@ -36,7 +36,7 @@ function LiveViewPage() {
             setSelectedWord={setSelectedWord}
             transcript={transcript.transcript}
             keywords={transcript.keywords}
-            mode={"review"}
+            mode={"live"}
             setPosition={setPosition}
           />
         </div>
