@@ -3,9 +3,9 @@ from flask import Flask, request, jsonify, app
 
 import os
 import json
-from cacheModule import *
-from glossaryModule import *
-from gpt_interaction import *
+from cacheModule import get_cached_data, CACHE_FILE
+from glossaryModule import get_definition
+from gpt_interaction import get_legal_explanation_and_usage
 
 app = Flask(__name__)
 

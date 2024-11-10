@@ -42,7 +42,7 @@ def get_legal_explanation_and_usage(term, definition):
             return {"error": "Explanation or Usage not found in response."}
 
         # Split the input into lines and extract each section
-        lines = response.split("\n").strip()
+        lines = response.split("\n")
         print(lines)
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
