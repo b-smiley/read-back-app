@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, request, jsonify, app
+from flask import Flask, request, jsonify, app, send_from_directory
 from flask_cors import CORS
 import os
 import json
@@ -7,6 +7,8 @@ from flask_cors import CORS
 from cacheModule import get_cached_data, add_to_cache, CACHE_FILE
 from gpt_interaction import get_legal_explanation_and_usage
 from glossaryModule import get_definition
+from elevenLabModule import get_mp3_file
+import traceback
 
 app = Flask(__name__)
 CORS(app)
@@ -63,9 +65,11 @@ def get_definition_api(term):
 @app.route('/api/generate_text_to_speech/<string:text>', methods=['GET'])
 def generate_text_to_speech(text):
     try:
-        return
-    except:
-        return
+        sound_file_path = get_mp3_file(text)
+        return send_from_directory(sound_file_path[0], sound_file_path[1])
+
+    except Exception:
+        return jsonify({"message": traceback.format_exc()}), 400
         
 
 
