@@ -18,7 +18,7 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\nUsage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by a \'\\n\' and for the data to come after the \':\' in each line."
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\'\\n\'Usage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by one \'\\n\' and for the data to come after the \':\' in each line."
 
     try:
         # Use the new chat method with gpt-3.5-turbo
@@ -43,6 +43,8 @@ def get_legal_explanation_and_usage(term, definition):
 
         # Split the input into lines and extract each section
         lines = response.split("\n")
+        # Remove empty lines
+        lines = [line for line in lines if line.strip() != ""]
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
@@ -53,6 +55,7 @@ def get_legal_explanation_and_usage(term, definition):
         }
     
     except Exception as e:
+        print(response)
         return {"error": str(e)}
 
 json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
