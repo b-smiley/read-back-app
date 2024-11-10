@@ -18,7 +18,7 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] Usage: [example sentence here]"
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] \\nUsage: [example sentence here]"
 
     try:
         # Use the new chat method with gpt-3.5-turbo
@@ -36,6 +36,11 @@ def get_legal_explanation_and_usage(term, definition):
         
         # Process the response to extract explanation and usage
         response = completion.choices[0].message.content
+
+        # Needs to contain "Explanation:" and "Usage:" to be valid
+        if "Explanation:" not in response or "Usage:" not in response or '\n' not in response:
+            return {"error": "Explanation or Usage not found in response."}
+
         # Split the input into lines and extract each section
         lines = response.split("\n")
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
