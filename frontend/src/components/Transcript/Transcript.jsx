@@ -12,7 +12,6 @@ export const getTranscript = async (file = "input_text.txt", live = false) => {
       `http://localhost:5000/get-saved-transcript-keywords?file=${file}`
     );
 
-
     const transcript_response = await axios.get(
       `http://localhost:5000/saved_text`
     );

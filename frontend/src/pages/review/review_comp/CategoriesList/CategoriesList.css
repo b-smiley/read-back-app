@@ -1,119 +1,125 @@
 /* The main container holding the list of people */
 .categories-list {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-  }
-  
-  /* "People" title above the list on the left side */
-  .categories-list h1 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    text-align: center;
-  }
-  
-  /* The list of people */
-  .category-items {
-    list-style: none;
-    padding: 0;
-    margin-right: 20px;
-  }
-  
-  .category-item {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #f4f4f4;
-    margin: 5px 0;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  
-  .category-item:hover {
-    background-color: #ddd;
-  }
-  
-  /* The greyed-out background (overlay) */
-  .greyed-out {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-    z-index: 999; /* Ensures the grey background is on top */
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  /* Centered popup box */
-  .person-details-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the box */
-    width: 400px; /* Width of the popup */
-    max-height: 80vh; /* Max height for the popup */
-    overflow-y: auto; /* Makes it scrollable if content overflows */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Ensures it is above the greyed background */
-    transition: opacity 0.3s ease-in-out;
-    overflow: hidden; /* Hide overflow to allow controlled scrolling */
-  }
-  
-  /* Close button styling */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #555;
-    border: none;
-    background: none;
-  }
-  
-  .close-btn:hover {
-    color: red; /* Change color when hovered */
-  }
-  
-  /* Styling for the speech content */
-  .speech-details {
-    margin-top: 20px;
-    max-height: calc(80vh - 100px); /* Adjust for the height of the title and close button */
-    overflow-y: auto;
-  }
-  
-  /* Styling for individual speech items */
-  .speech-item {
-    margin-bottom: 15px;
-  }
-  
-  .speech-item p {
-    margin: 5px 0;
-  }
-  
-  .speech-item strong {
-    color: #333;
-  }
-  
-  .speech-item small {
-    color: #888;
-  }
-  
-  /* Custom scrollbar for the popup */
-  .person-details-box::-webkit-scrollbar {
-    width: 8px; /* Smaller scrollbar */
-  }
-  
-  .person-details-box::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3); /* Darker color for the scrollbar thumb */
-    border-radius: 4px; /* Rounded edges */
-  }
-  
-  .person-details-box::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Lighter background for the scrollbar track */
-    border-radius: 4px; /* Rounded edges */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 400px;
+}
+
+/* "People" title above the list on the left side */
+.categories-list h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+/* The list of people */
+.category-items {
+  list-style: none;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.category-item {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f4f4f4;
+  margin: 5px 0;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.category-item:hover {
+  background-color: #ddd;
+}
+
+/* The greyed-out background (overlay) */
+.greyed-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 999; /* Ensures the grey background is on top */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Centered popup box */
+.person-details-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the box */
+  width: 400px; /* Width of the popup */
+  max-height: 80vh; /* Max height for the popup */
+  overflow-y: auto; /* Makes it scrollable if content overflows */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Ensures it is above the greyed background */
+  transition: opacity 0.3s ease-in-out;
+  overflow: hidden; /* Hide overflow to allow controlled scrolling */
+}
+
+/* Close button styling */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  border: none;
+  background: none;
+}
+
+.close-btn:hover {
+  color: red; /* Change color when hovered */
+}
+
+/* Styling for the speech content */
+.speech-details {
+  margin-top: 20px;
+  max-height: calc(
+    80vh - 100px
+  ); /* Adjust for the height of the title and close button */
+  overflow-y: auto;
+}
+
+/* Styling for individual speech items */
+.speech-item {
+  margin-bottom: 15px;
+}
+
+.speech-item p {
+  margin: 5px 0;
+}
+
+.speech-item strong {
+  color: #333;
+}
+
+.speech-item small {
+  color: #888;
+}
+
+/* Custom scrollbar for the popup */
+.person-details-box::-webkit-scrollbar {
+  width: 8px; /* Smaller scrollbar */
+}
+
+.person-details-box::-webkit-scrollbar-thumb {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Darker color for the scrollbar thumb */
+  border-radius: 4px; /* Rounded edges */
+}
+
+.person-details-box::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Lighter background for the scrollbar track */
+  border-radius: 4px; /* Rounded edges */
+}
