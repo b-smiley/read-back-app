@@ -1,15 +1,14 @@
-// src/components/StreamingComponent.js
 import React, { useEffect, useState } from 'react';
 
-function StreamingComponent() {
-    const [words, setWords] = useState([]);
+function StreamingComponent({ fileName }) {
+    const [streamedText, setStreamedText] = useState("");
     const [savedText, setSavedText] = useState("");
 
     useEffect(() => {
-        const eventSource = new EventSource('http://localhost:5000/stream');
+        const eventSource = new EventSource(`http://localhost:5000/stream?file=${fileName}`);
 
         eventSource.onmessage = (event) => {
-            setWords((prevWords) => [...prevWords, event.data]);
+            setStreamedText((prevText) => prevText + event.data);  // Append the incoming data to existing text
         };
 
         eventSource.onerror = () => {
@@ -19,22 +18,19 @@ function StreamingComponent() {
         return () => {
             eventSource.close();
         };
-    }, []);
+    }, [fileName]);
 
     useEffect(() => {
-        // Fetch saved text once when the component loads
         fetch('http://localhost:5000/saved_text')
-            .then(response => response.json())
-            .then(data => setSavedText(data.saved_text));
+            .then((response) => response.json())
+            .then((data) => setSavedText(data.saved_text));
     }, []);
 
     return (
         <div>
-            <h2>Streaming Words:</h2>
+            <h2>Streaming Text:</h2>
             <div>
-                {words.map((word, index) => (
-                    <p key={index}>{word}</p>
-                ))}
+                <p>{streamedText}</p>  {/* Display the streamed text */}
             </div>
             <h2>Saved Text:</h2>
             <p>{savedText}</p>

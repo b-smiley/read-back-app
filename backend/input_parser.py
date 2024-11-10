@@ -7,12 +7,20 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-saved_text = []  # Store all characters for other purposes
+saved_text = []  # OUTPUT VARIABLE.  THIS IS WHAT FRONTEND READS (SUPPOSEDLY)
 
 subject = ""
 segment = ""
 
 class Segment:
+    '''
+    Purpose: stores data related to single instance of speaking
+    (String) content -> phrase spoken
+    (int) index -> starting index of phrase
+    (int) length -> length of phrase
+    
+    to_dict -> converts data to a dictionary format for .json dump
+    '''
     def __init__(self, content, index):
         self.content = content
         self.index = index
@@ -26,6 +34,13 @@ class Segment:
         }
 
 class Actor:
+    '''
+    Purpose: stores data related to a single person
+    (String) name -> name of person
+    (List[Segment]) speech -> list of instances of speaking
+    
+    to_dict -> converts data to a dictionary format for .json dump
+    '''
     def __init__(self, name, speech=None, index=None, descriptors=None):
         self.name = name
         # If speech is provided, ensure it's a list of Segment objects
@@ -39,8 +54,8 @@ class Actor:
 
 
 
-actors = []
-current_actor = None
+actors = []             #list of all people
+current_actor = None    #person currently speaking
 
 
 
@@ -53,6 +68,19 @@ keywords_data = {key.lower(): value for key, value in raw_keywords_data.items()}
 matches_data = {}
 
 def generate_words(input_file):
+    '''
+    Purpose - this function completes a few things
+    ->parses input file and matches legal jargon with the termsGlossary.json file
+    ->outputs matches with their indices as the key and creates the matches.json file
+    ->parses input file again, this time outputting each char to saved text (for front end)
+    ->calls identify words
+    ->saves idenfied people and their speaking logs to actors.json
+
+    returns nothing
+    '''
+    global saved_text               #VARIABLE USED BY FRONTEND TO READ OUTPUT
+    saved_text.clear()
+
     match_index = 0  # Initialize the match index to start with
     if not os.path.exists(input_file):
         return f"Error: The file '{input_file}' does not exist."
@@ -78,41 +106,33 @@ def generate_words(input_file):
         with open('./data/matches.json', 'w') as f:
             json.dump(matches_data, f, indent=4)
 
+
+
     start_index = 0
     curr_index = 1
     global segment
     for char in text:
         segment += char  # Add character to the current segment
+
+        saved_text.append(char)
         if char in {'.', '?', '!', '\n', ')'}:  # Check if the character is a delimiter
             if(char != '.' or not segment[-3:-1].lower() in {"ms", "mr"}):
-                saved_text.append(segment)  # Append the complete segment to saved_text
-                yield segment  # Send the full segment
+                #is a complete segment to be processed
                 identify_word(start_index)
-                segment = ""  # Reset the segment collector
+                segment = ""
                 start_index = curr_index
+        yield char
+        time.sleep(0.01)
         curr_index += 1
-        time.sleep(0.001)  # Control the rate (6000 characters per minute)
 
-    for actor in actors:
-        break
-        print(f"actor: {actor.name}")
-    identify_word(start_index)
-    # Append any remaining segment after the loop ends
-    if segment:
-        saved_text.append(segment)
-        yield segment
-      
+
+    #cleans junk data      
     for actor in actors[:]:
-        # Remove any segments with empty content within the speech list
         actor.speech = [phrase for phrase in actor.speech if phrase.content != []]
-
-        # Remove the actor if both speech and descriptors are empty
         if len(actor.speech) == 0 :
             actors.remove(actor)
 
-        
-    #print(f"Actors before writing: {[type(actor) for actor in actors]}")
- 
+    #write to json
     try:
         with open('./data/actors.json', 'w') as f:
             json.dump([actor.to_dict() for actor in actors], f, indent=4)
@@ -122,9 +142,13 @@ def generate_words(input_file):
 
 
 def identify_word(index):
+    '''
+    Purpose
+    ->identifies if segment is a new person or continuation of previous conversation
+    ->creates/updates Actor/Segment class accordingly
+    returns nothing
+    '''
     global segment
-
-    #print(f"identifying word {index}, {segment}")
     global actors
     global current_actor
     
@@ -135,7 +159,6 @@ def identify_word(index):
     only_letters = ''.join([char for char in segment if char.isalpha()])
     
     if(only_letters.isupper()):  # This is a subject/person
-        #print("Found name")
         subject = only_letters
 
         # Check if the actor already exists, otherwise create a new one
@@ -145,10 +168,9 @@ def identify_word(index):
         else:
             current_actor = Actor(subject, [], index, [])
             actors.append(current_actor)
-    else:  # Otherwise, treat it as a speech segment
-        #current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
+    else: 
         if(index == current_actor.speech[-1].index + current_actor.speech[-1].length and current_actor.speech[-1].content[-1] != "\n"):
-            current_actor.speech[-1].content += segment
+            current_actor.speech[-1].content += segment #continuation of same paragraph
         else: 
             current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
 

@@ -21,7 +21,7 @@ function App() {
                 </a>
             </header>
             <main>
-                <StreamingComponent />
+                <StreamingComponent filename = "input_text.txt" />
             </main>
         </div>
     );
