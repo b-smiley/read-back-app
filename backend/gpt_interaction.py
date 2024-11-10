@@ -43,12 +43,8 @@ def get_legal_explanation_and_usage(term, definition):
 
         # Split the input into lines and extract each section
         lines = response.split("\n")
-<<<<<<< HEAD
-        print(lines)
-=======
         # Remove empty lines
         lines = [line for line in lines if line.strip() != ""]
->>>>>>> Luca
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
@@ -59,13 +55,8 @@ def get_legal_explanation_and_usage(term, definition):
         }
     
     except Exception as e:
-<<<<<<< HEAD
-        error_details = traceback.format_exc()  # Get the full traceback as a string
-        return {"error": str(e), "details": error_details}
-=======
         print(response)
         return {"error": str(e)}
->>>>>>> Luca
 
 json = get_legal_explanation_and_usage("brief service", "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client.")
 print(json)
