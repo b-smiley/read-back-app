@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Glossary.css';
+import AudioListener from "../Audio/AudioListener";
 import axios from 'axios';
 
 function Glossary({ selectedWord, position, setSelectedWord }) {
@@ -91,6 +92,7 @@ function Glossary({ selectedWord, position, setSelectedWord }) {
       >
         {loading ? 'Loading...' : showMore ? 'Show Less' : 'Show More'}
       </button>
+      <AudioListener text={definition} />
     </div>
   );
 }

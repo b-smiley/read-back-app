@@ -38,12 +38,12 @@ const AudioListener = ({ text }) => {
   return (
     <div>
       <button onClick={handleClick} disabled={loading}>
-        {loading ? 'Loading...' : 'Generate Speech'}
+        {loading ? 'Loading...' : 'Text to Speech'}
       </button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {audioUrl && (
         <button onClick={handlePlay}>
-          Play Audio
+          Play
         </button>
       )}
     </div>
