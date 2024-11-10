@@ -3,18 +3,37 @@ import "./Transcript.css";
 import axios from "axios";
 
 export const getTranscript = async (file = "input_text.txt", live = false) => {
-  const response = await axios.get(`http://localhost:5000/stream?file=${file}`);
+  try {
+    // const transcript_response = await axios.get(
+    //   `http://localhost:5000/stream?file=${file}&live=${live}`
+    // );
 
-  const json_obj = {
-    transcript: response.data,
-    keywords: [
-      {
-        startIndex: 0,
-        endIndex: 5,
-      },
-    ],
-  };
-  return json_obj;
+    const keywords_response = await axios.get(
+      `http://localhost:5000/get-saved-transcript-keywords?file=${file}`
+    );
+
+    const transcript_response = await axios.get(
+      `http://localhost:5000/saved_text`
+    );
+
+    // Convert keywords object to an array of keyword object
+    const keywords = keywords_response.data;
+
+    const keywordEntries = Object.keys(keywords).map((startIndex) => ({
+      keyword: keywords[startIndex].keyword,
+      startIndex: parseInt(startIndex, 10),
+      endIndex: parseInt(startIndex, 10) + keywords[startIndex].length,
+    }));
+
+    const json_obj = {
+      transcript: transcript_response.data,
+      keywords: keywordEntries,
+    };
+
+    return json_obj;
+  } catch (error) {
+    console.error(error);
+  }
 };
 function Transcript({
   setSelectedWord,
@@ -67,7 +86,9 @@ function Transcript({
 
               // If the same word is clicked again, close the glossary
               setSelectedWord((prev) =>
-                prev === segment.content ? null : segment.content
+                prev === segment.content.toLowerCase()
+                  ? null
+                  : segment.content.toLowerCase()
               );
             }}
           >

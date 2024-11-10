@@ -5,8 +5,7 @@ import Transcript, {
 import Glossary from "../../components/Glossary/Glossary";
 import Title from "../../components/Title/Title";
 
-const jsonResponse = getTranscript();
-
+const jsonResponse = await getTranscript();
 function ReviewPage() {
   const [selectedWord, setSelectedWord] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });

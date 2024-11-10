@@ -12,3 +12,12 @@
   overflow-y: auto;
   height: 225px;
 }
+
+.transcript-button {
+  background: none; /* Removes background */
+  border: none; /* Removes border */
+  color: blue; /* Sets text color to blue */
+  padding: 0; /* Removes extra padding */
+  font: inherit; /* Ensures font matches surrounding text */
+  cursor: pointer; /* Gives pointer cursor for interactivity */
+}
