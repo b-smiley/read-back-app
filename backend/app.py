@@ -70,8 +70,21 @@ def generate_text_to_speech(text):
 
     except Exception:
         return jsonify({"message": traceback.format_exc()}), 400
-        
 
+
+IMAGE_FOLDER = './data/images/'
+IMAGE_DESCRIPTIONS = './data/images/imageDescriptions.json'
+@app.route('/api/get_images', methods=['GET'])
+def get_images():
+    #returns filenames for each image
+    with open(IMAGE_DESCRIPTIONS, 'r') as file:
+        imageDict = json.load(file)
+    return imageDict
+
+@app.route('/api/get_image/<string:filename>', methods=['GET'])
+def get_image(filename):
+    #returns the image object
+    return send_from_directory(IMAGE_FOLDER, filename)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
