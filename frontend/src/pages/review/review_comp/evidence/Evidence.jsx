@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Evidence.css";
+import AudioListener from "../../../../components/AudioListener/AudioListener";
 
 const Evidence = () => {
   const [images, setImages] = useState([]);
@@ -43,6 +44,7 @@ const Evidence = () => {
               alt={image.description}
             />
             <p>{image.description}</p>
+            <AudioListener text={image.description} />
           </div>
         ))
       ) : (
