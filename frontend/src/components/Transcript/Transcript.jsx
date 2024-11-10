@@ -2,26 +2,18 @@ import React from "react";
 import "./Transcript.css";
 import axios from "axios";
 
-export const getTranscript = () => {
-  let transcript = "";
-  for (let i = 0; i < 100; i++) {
-    transcript += "charge this is a transcript.";
-  }
+export const getTranscript = async (file = "input_text.txt", live = false) => {
+  const response = await axios.get(`http://localhost:5000/stream?file=${file}`);
 
-  let json_obj = {
-    transcript: transcript,
+  const json_obj = {
+    transcript: response.data,
     keywords: [
       {
         startIndex: 0,
-        endIndex: 6,
-      },
-      {
-        startIndex: 15,
-        endIndex: 21,
+        endIndex: 5,
       },
     ],
   };
-
   return json_obj;
 };
 function Transcript({
@@ -89,7 +81,11 @@ function Transcript({
   };
 
   return (
-    <div className="transcript">
+    <div
+      className={`transcript ${
+        mode === "live" ? "live-transcript" : "review-transcript"
+      }`}
+    >
       <h2>Transcript</h2>
       <div className="transcript-text">{generateInteractiveText()}</div>
     </div>
