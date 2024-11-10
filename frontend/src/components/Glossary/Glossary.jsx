@@ -78,6 +78,23 @@ function Glossary({ selectedWord, position, setSelectedWord }) {
     setLoading(false);
   };
 
+  const getAdjustedPosition = (x, y) => {
+    const popupWidth = 300;  // Adjust the width as per the popup's actual width
+    const popupHeight = 200; // Adjust the height as per the popup's actual height
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // Adjust X position if too close to the right edge
+    const adjustedX = x + popupWidth > screenWidth ? screenWidth - popupWidth - 10 : x;
+
+    // Adjust Y position if too close to the bottom edge
+    const adjustedY = y + popupHeight > screenHeight ? screenHeight - popupHeight - 10 : y;
+
+    return { left: adjustedX + 25, top: adjustedY + 25 }; // Offset with 25px as per your original style
+  };
+
+  const adjustedPosition = getAdjustedPosition(position.x, position.y);
+
   // Return null if no word is selected
   if (!selectedWord) return null;
 
@@ -85,8 +102,8 @@ function Glossary({ selectedWord, position, setSelectedWord }) {
     <div
       className="glossary-popup"
       style={{
-        left: position.x + 25, // Offset to X position
-        top: position.y + 25, // Offset to Y position
+        left: adjustedPosition.left,
+        top: adjustedPosition.top,
       }}
     >
       <h2>Definition of {selectedWord}</h2>
