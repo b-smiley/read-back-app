@@ -1,5 +1,6 @@
 .live-view-page {
-  background-color: aliceblue;
+  background: linear-gradient(to bottom, #4d6a6d, #28393b);
+  height: 100%;
 }
 .live-view-page .panels {
   display: flex;
@@ -13,4 +14,13 @@
 
 .live-view-page .panels .right {
   margin-right: 20px;
+  width: 60%;
+}
+
+.live-view-page .proceedings {
+  margin-top: 20px;
+}
+
+h2 {
+  color: white;
 }

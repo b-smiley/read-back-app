@@ -4,7 +4,7 @@
   justify-content: space-around; /* Space out the links evenly */
   align-items: center;
   padding: 10px 20px;
-  background-color: #333; /* Dark background for the navbar */
+  background-color: #383434; /* Dark background for the navbar */
 }
 
 /* Styling for each Link */
@@ -15,6 +15,12 @@
   padding: 8px 16px;
   border-radius: 4px; /* Rounded corners */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar a.active {
+  color: white; /* Highlight color */
+  font-weight: bold; /* Optional: make the active link bold */
+  border-bottom: 4px solid #4d6a6d; /* Optional: add underline */
 }
 
 /* Hover effect for the links */
