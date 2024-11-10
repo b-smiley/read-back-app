@@ -47,13 +47,13 @@ function Transcript({ transcript = "", keywords = [], mode = "" }) {
       // Push the keyword as a button
       segments.push({
         type: "button",
-        content: transcript.slice(keyword.startIndex, keyword.endIndex),
+        content: transcript.slice(keyword.startIndex, keyword.lastIndex),
         startIndex: keyword.startIndex,
-        endIndex: keyword.endIndex,
+        lastIndex: keyword.lastIndex,
       });
 
       // Update the completed portion
-      lastIndex = keyword.endIndex;
+      lastIndex = keyword.lastIndex;
     });
     // Add the remaining text after the last keyword
     if (lastIndex < transcript.length) {
