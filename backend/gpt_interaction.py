@@ -18,7 +18,7 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\nUsage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by a \'\\n\' and for the data to come after the \':\' in each line."
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\'\\n\'Usage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by one \'\\n\' and for the data to come after the \':\' in each line."
 
     try:
         # Use the new chat method with gpt-3.5-turbo
@@ -43,7 +43,12 @@ def get_legal_explanation_and_usage(term, definition):
 
         # Split the input into lines and extract each section
         lines = response.split("\n")
+<<<<<<< HEAD
         print(lines)
+=======
+        # Remove empty lines
+        lines = [line for line in lines if line.strip() != ""]
+>>>>>>> Luca
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
@@ -54,8 +59,13 @@ def get_legal_explanation_and_usage(term, definition):
         }
     
     except Exception as e:
+<<<<<<< HEAD
         error_details = traceback.format_exc()  # Get the full traceback as a string
         return {"error": str(e), "details": error_details}
+=======
+        print(response)
+        return {"error": str(e)}
+>>>>>>> Luca
 
 json = get_legal_explanation_and_usage("brief service", "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client.")
 print(json)
