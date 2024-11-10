@@ -28,3 +28,16 @@
   border: 1px solid #ddd;
   cursor: pointer;
 }
+
+.extended-definition {
+  margin-top: 10px;
+}
+
+.extended-definition strong {
+  font-weight: bold;
+}
+
+.extended-definition .usage {
+  margin-top: 10px; /* Add space between usage and explanation */
+}
+

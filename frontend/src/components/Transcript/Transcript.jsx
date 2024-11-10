@@ -5,7 +5,7 @@ import axios from "axios";
 export const getTranscript = () => {
   let transcript = "";
   for (let i = 0; i < 100; i++) {
-    transcript += "charge this is a transcript.";
+    transcript += "charge";
   }
 
   let json_obj = {
@@ -14,10 +14,6 @@ export const getTranscript = () => {
       {
         startIndex: 0,
         endIndex: 6,
-      },
-      {
-        startIndex: 15,
-        endIndex: 21,
       }
     ],
   };

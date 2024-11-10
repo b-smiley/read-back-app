@@ -41,6 +41,7 @@ def get_gpt_response(term):
 
 @app.route('/api/clear_cache', methods=['POST'])
 def clear_cache():
+    print("Clearing Cache")
     try:
         with open(CACHE_FILE, 'w') as file:
             json.dump({}, file) #write an empty file to the cache location
