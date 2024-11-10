@@ -7,3 +7,5 @@ GET http://127.0.0.1:5000/api/get_gpt_response/charge
 ###
 
 GET http://127.0.0.1:5000/api/get_definition_api/tariff
+
+GET https://api.elevenlabs.io/v1/text-to-speech/<9BWtsMINqrJLrRacOk9x>
