@@ -3,11 +3,12 @@
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
-  width: 200px;
+  width: 250px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
   font-size: 14px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .glossary-popup h2 {
@@ -18,4 +19,12 @@
 
 .glossary-popup p {
   margin: 5px 0 0;
+}
+
+.glossary-popup button {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }

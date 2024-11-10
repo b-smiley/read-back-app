@@ -2,7 +2,6 @@ import React from "react";
 import "./Transcript.css";
 import axios from "axios";
 
-/** Gets the transcript */
 export const getTranscript = () => {
   let transcript = "";
   for (let i = 0; i < 100; i++) {
@@ -87,23 +86,6 @@ function Transcript({
         return <span key={index}>{segment.content}</span>;
       }
     });
-  };
-
-  const renderText = () => {
-    // TODO
-
-    switch (mode) {
-      case "live":
-        return (
-          <div className="live-transcript">{generateInteractiveText()}</div>
-        );
-      case "review":
-        return (
-          <div className="review-transcript">{generateInteractiveText()}</div>
-        );
-      default:
-        return <div>ERROR</div>;
-    }
   };
 
   return (
