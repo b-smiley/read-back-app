@@ -13,7 +13,7 @@ def load_cache():
 def save_cache(cache_data):
     # update the cache with a new version
     with open(CACHE_FILE, 'w') as file:
-        json.dump(cache_data, file)
+        json.dump(cache_data, file, indent=4)
 
 def get_cached_data(term):
     '''

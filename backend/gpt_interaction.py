@@ -49,14 +49,14 @@ def get_legal_explanation_and_usage(term, definition):
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
         # Return the parsed response as a dictionary
-        return {
-            "explanation": explanation,
-            "usage": usage
-        }
+        return{"explanation": explanation,
+            "usage": usage}
+            
+        
     
     except Exception as e:
         print(response)
         return {"error": str(e)}
 
-json = get_legal_explanation_and_usage("brief service", "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client.")
-print(json)
+#json = get_legal_explanation_and_usage("brief service", "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client.")
+#print(json)

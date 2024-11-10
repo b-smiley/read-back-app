@@ -1,1 +1,6 @@
-{"rowbotham": "{\"explanation\": \"The term \\\"Rowbotham\\\" refers to a legal case in Canada that established the right to have a lawyer provided by the government if a person cannot afford one themselves but needs legal representation for a fair trial. This right can be invoked when the case is complex and the accused is at risk of being imprisoned.\", \"usage\": \"The defendant in the high-profile case was able to argue for Rowbotham funding to ensure they had a lawyer for the trial.\"}", "charge": "{\"explanation\": \"In the legal context, a charge is when someone is formally accused of committing a crime. It is the first step before they go to court and face trial.\", \"usage\": \"The police decided to press charges against the suspect for theft after gathering enough evidence.\"}"}
+{
+    "charge": {
+        "explanation": "In legal terms, a charge is a formal accusation that someone has committed a crime. It is the first step taken before the case goes to court.",
+        "usage": "The police arrested the suspect and later filed a charge of theft against him."
+    }
+}

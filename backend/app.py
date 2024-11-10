@@ -1,6 +1,6 @@
 # app.py
 from flask import Flask, request, jsonify, app
-
+from flask_cors import CORS
 import os
 import json
 from cacheModule import get_cached_data, CACHE_FILE, add_to_cache
@@ -8,6 +8,7 @@ from glossaryModule import get_definition
 from gpt_interaction import get_legal_explanation_and_usage
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello():
@@ -29,8 +30,8 @@ def get_gpt_response(term):
     definition = get_definition(term)
     if definition == None:
         return jsonify({"message": "Term not found"}), 400
-    #generate response
-    new_entry = json.dumps(get_legal_explanation_and_usage(term, definition))
+    #generate response  
+    new_entry = get_legal_explanation_and_usage(term, definition)
     #add to cache
     add_to_cache(term, new_entry)
 
