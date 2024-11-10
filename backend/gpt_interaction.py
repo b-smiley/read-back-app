@@ -50,5 +50,5 @@ def get_legal_explanation_and_usage(term, definition):
     except Exception as e:
         return {"error": str(e)}
 
-# json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
-# print(json)
+json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
+print(json)

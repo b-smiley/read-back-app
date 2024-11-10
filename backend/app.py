@@ -13,7 +13,12 @@ def hello():
 CACHE_FILE = './data/termsUsageExplanations.json'
 DEFINITION_FILE = './data/termsGlossary.json'
 
-
+def load_cache():
+    # load the cache on the machine
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, 'r') as file:
+            return json.load(file)
+    return {}
 
 def save_cache(cache_data):
     # update the cache with a new version
@@ -31,12 +36,10 @@ def get_cached_data(term):
         JSON: the JSON data assosciated with the gpt entries of the term
         None: the term was not in the cache
     '''
-    with open(CACHE_FILE, 'r') as file:
-        cache = json.load(file)
-
+    cache = load_cache()
     if term in cache:
-        cached_data = cache[term]
-        return cached_data
+        cached_entry = cache[term]
+        return cached_entry
     return None
 
 def get_definition(term):
@@ -65,8 +68,8 @@ def get_definition(term):
 def get_gpt_response(term):
     try:
         termJSON = get_cached_data(term)
-    except:
-        return jsonify({"message": "Couldn't open file"}), 400
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
     
     if termJSON:
         #term in cache
