@@ -1,19 +1,20 @@
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/home/HomePage";
-import LiveViewPage from "./pages/live-view/LiveViewPage";
+import NavBar from "./components/NavBar/NavBar";
+import ReviewPage from "./pages/review/ReviewPage";
+import LivePage from "./pages/live/LivePage";
+
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <NavBar />
+      <div className="app-container">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/live-view" element={<LiveViewPage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="/" element={<LivePage />} />
+          <Route path="/review" element={<ReviewPage />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
