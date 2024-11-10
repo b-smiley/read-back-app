@@ -3,6 +3,8 @@ import Transcript, { getTranscript } from "../../components/Transcript/Transcrip
 import Glossary from "../../components/Glossary/Glossary";
 import NavBar from "../../components/NavBar/NavBar";
 import CategoriesList from "./review_comp/CategoriesList/CategoriesList";
+import StreamingComponent from '../../StreamingComponent';
+import Evidence from "./review_comp/evidence/Evidence";
 
 const jsonResponse = getTranscript();
 
@@ -22,6 +24,8 @@ function ReviewPage() {
         setPosition={setPosition}
       />
       <CategoriesList />
+      <Evidence />
+      <StreamingComponent />
     </div>
   );
 }
