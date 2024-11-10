@@ -47,7 +47,7 @@ function Proceeding() {
 
   return (
     <div className="proceeding">
-      <h1>Court Proceeding</h1>
+      <h2>Court Proceeding</h2>
       <div className="card-row">
         {proceduralSteps.map((step, index) => (
           <div

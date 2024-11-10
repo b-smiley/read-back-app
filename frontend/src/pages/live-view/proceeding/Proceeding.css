@@ -28,7 +28,7 @@
 }
 
 .highlighted {
-  background-color: #e0f7fa; /* Light blue highlight */
-  border-color: #00796b; /* Darker border for contrast */
+  background-color: #98d2da; /* Light blue highlight */
+  border-color: black; /* Darker border for contrast */
   font-weight: bold;
 }

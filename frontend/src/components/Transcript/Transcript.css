@@ -1,16 +1,16 @@
 .transcript {
-  background-color: rgb(229, 221, 221); /* White background for the card */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.transcript-text {
+  background-color: #fff7e6;
+  height: 225px;
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
   padding: 0px 20px 20px 20px; /* Padding inside the card */
   max-width: 800px; /* Maximum width of the card */
   margin: 20px auto; /* Centering the card horizontally */
-  overflow: hidden; /* Hide any overflowing content */
-}
-
-.transcript-text {
   overflow-y: auto;
-  height: 225px;
 }
 
 .transcript-button {
