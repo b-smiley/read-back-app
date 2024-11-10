@@ -3,8 +3,10 @@ from flask import Flask, request, jsonify, app
 from gpt_interaction import get_legal_explanation_and_usage
 import os
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello():

@@ -1,40 +1,21 @@
-.popup-container {
+.glossary-popup {
   position: absolute;
-  z-index: 999;
   background-color: white;
   border: 1px solid #ccc;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  max-width: 250px;
-  width: auto;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  font-size: 14px;
   border-radius: 4px;
 }
 
-.popup {
-  position: relative;
+.glossary-popup h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.close-popup {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: red;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  font-size: 12px;
-}
-
-.transcript span {
-  cursor: pointer;
-  color: blue;
-  text-decoration: underline;
-}
-
-.transcript span:hover {
-  color: darkblue;
+.glossary-popup p {
+  margin: 5px 0 0;
 }
