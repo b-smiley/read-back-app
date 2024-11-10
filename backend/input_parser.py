@@ -12,9 +12,6 @@ saved_text = []  # Store all characters for other purposes
 subject = ""
 segment = ""
 
-
-
-
 class Segment:
     def __init__(self, content, index):
         self.content = content
