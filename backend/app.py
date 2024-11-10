@@ -35,7 +35,7 @@ def stream():
 def saved_text_route():
     # You can use the saved_text variable from input_parser.py as well
     return input_parser.saved_text  # Return all saved characters
-=======
+
 @app.route('/api/get_gpt_response/<string:term>', methods=['GET'])
 def get_gpt_response(term):
     try:
