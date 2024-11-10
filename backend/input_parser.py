@@ -95,14 +95,23 @@ def generate_words(input_file):
         time.sleep(0.001)  # Control the rate (6000 characters per minute)
 
     for actor in actors:
+        break
         print(f"actor: {actor.name}")
     identify_word(start_index)
     # Append any remaining segment after the loop ends
     if segment:
         saved_text.append(segment)
         yield segment
-    
+     
     for actor in actors:
+        if(len(actor.speech) == 1):
+            actors.remove(actor) 
+            continue
+         
+        for phrase in actor.speech:
+            if(phrase.content == []):
+                actor.speech.remove(phrase)
+
         if actor.speech is None:
             actors.remove(actor)
     
@@ -131,7 +140,7 @@ def identify_word(index):
     only_letters = ''.join([char for char in segment if char.isalpha()])
     
     if(only_letters.isupper()):  # This is a subject/person
-        print("Found name")
+        #print("Found name")
         subject = only_letters
 
         # Check if the actor already exists, otherwise create a new one
@@ -143,7 +152,7 @@ def identify_word(index):
             actors.append(current_actor)
 
         return
- 
+  
     elif(segment[0] == "(" and segment[-1] == ")"):  # Descriptor
         current_actor.descriptors.append(segment)
         return

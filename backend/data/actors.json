@@ -3,11 +3,6 @@
         "name": "CRIMINALDISTRICTCOURT",
         "speech": [
             {
-                "content": [],
-                "index": 0,
-                "length": 0
-            },
-            {
                 "content": " Officer Peter Paul.",
                 "index": 1337,
                 "length": 20
@@ -31,17 +26,6 @@
                 "content": " Yes.",
                 "index": 1887,
                 "length": 5
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "PARISHOFORLEANS",
-        "speech": [
-            {
-                "content": [],
-                "index": 24,
-                "length": 0
             }
         ],
         "descriptors": []
@@ -71,25 +55,9 @@
         "name": "NO",
         "speech": [
             {
-                "content": [],
-                "index": 81,
-                "length": 0
-            },
-            {
                 "content": " 123-456\n",
                 "index": 84,
                 "length": 9
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "VERSUS",
-        "speech": [
-            {
-                "content": [],
-                "index": 93,
-                "length": 0
             }
         ],
         "descriptors": []
@@ -108,11 +76,6 @@
     {
         "name": "JOHNDOE",
         "speech": [
-            {
-                "content": [],
-                "index": 112,
-                "length": 0
-            },
             {
                 "content": "Probable Cause Hearing\n",
                 "index": 122,
@@ -137,17 +100,6 @@
         "descriptors": []
     },
     {
-        "name": "APPEARANCES",
-        "speech": [
-            {
-                "content": [],
-                "index": 332,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "REPRESENTINGTHESTATEOFLOUISIANA",
         "speech": [
             {
@@ -161,11 +113,6 @@
     {
         "name": "JANESMITHESQ",
         "speech": [
-            {
-                "content": [],
-                "index": 382,
-                "length": 0
-            },
             {
                 "content": "Your Honor, the State is ready to proceed with motions in John Doe.",
                 "index": 786,
@@ -310,17 +257,6 @@
         "descriptors": []
     },
     {
-        "name": "ASSISTANTDISTRICTATTORNEY",
-        "speech": [
-            {
-                "content": [],
-                "index": 399,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "REPRESENTINGTHEDEFENDANT",
         "speech": [
             {
@@ -332,33 +268,11 @@
         "descriptors": []
     },
     {
-        "name": "MARYJANEESQ",
-        "speech": [
-            {
-                "content": [],
-                "index": 456,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "ORLEANSPUBLICDEFENDERS",
         "speech": [
             {
                 "content": [],
                 "index": 472,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "REPORTEDBY",
-        "speech": [
-            {
-                "content": [],
-                "index": 498,
                 "length": 0
             }
         ],
@@ -396,33 +310,11 @@
         "descriptors": []
     },
     {
-        "name": "OFFICIALCOURTREPORTER",
-        "speech": [
-            {
-                "content": [],
-                "index": 534,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "INANDFORTHEPARISHOFORLEANS",
         "speech": [
             {
                 "content": [],
                 "index": 558,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "WITNESSINDEX",
-        "speech": [
-            {
-                "content": [],
-                "index": 611,
                 "length": 0
             }
         ],
@@ -442,11 +334,6 @@
     {
         "name": "DETECTIVEPETERPAUL",
         "speech": [
-            {
-                "content": [],
-                "index": 641,
-                "length": 0
-            },
             {
                 "content": "Direct Examination by Ms.",
                 "index": 662,
@@ -471,17 +358,6 @@
         "descriptors": []
     },
     {
-        "name": "EXHIBITINDEX",
-        "speech": [
-            {
-                "content": [],
-                "index": 725,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "MS",
         "speech": [
             {
@@ -495,11 +371,6 @@
     {
         "name": "THECOURT",
         "speech": [
-            {
-                "content": [],
-                "index": 911,
-                "length": 0
-            },
             {
                 "content": "This is the matter of the State versus John Doe.",
                 "index": 922,
@@ -574,33 +445,11 @@
         "descriptors": []
     },
     {
-        "name": "DIRECTEXAMINATION",
-        "speech": [
-            {
-                "content": [],
-                "index": 1248,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
         "name": "BYMS",
         "speech": [
             {
                 "content": [],
                 "index": 1269,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "EXAMINATIONBYMS",
-        "speech": [
-            {
-                "content": [],
-                "index": 1582,
                 "length": 0
             }
         ],
@@ -620,11 +469,6 @@
     {
         "name": "THEWITNESS",
         "speech": [
-            {
-                "content": [],
-                "index": 2219,
-                "length": 0
-            },
             {
                 "content": "Sure, I will take a look.",
                 "index": 2232,
@@ -646,11 +490,6 @@
     {
         "name": "REPORTERSPAGE",
         "speech": [
-            {
-                "content": [],
-                "index": 3355,
-                "length": 0
-            },
             {
                 "content": "I, JOE REPORTER, Certified Court Reporter in and for the State of Louisiana, the officer, as defined in Rule of the Federal Rules of Civil Procedure and/or Article (B)",
                 "index": 3372,
@@ -687,11 +526,6 @@
     {
         "name": "REPORTERSCERTIFICATE",
         "speech": [
-            {
-                "content": [],
-                "index": 4219,
-                "length": 0
-            },
             {
                 "content": "This certification is valid only for a transcript accompanied by my original signature and original required seal on this page.",
                 "index": 4243,
