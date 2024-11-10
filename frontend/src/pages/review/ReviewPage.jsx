@@ -5,8 +5,9 @@ import Transcript, {
 import Glossary from "../../components/Glossary/Glossary";
 import Title from "../../components/Title/Title";
 import CategoriesList from "./review_comp/CategoriesList/CategoriesList";
-import StreamingComponent from '../../StreamingComponent';
 import Evidence from "./review_comp/evidence/Evidence";
+import AudioListener from "../../components/Audio/AudioListener";
+import "./ReviewPage.css";
 
 
 const jsonResponse = await getTranscript();
@@ -31,7 +32,6 @@ function ReviewPage() {
       />
       <CategoriesList />
       <Evidence />
-      <StreamingComponent />
     </div>
   );
 }

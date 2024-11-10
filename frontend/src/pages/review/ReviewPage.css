@@ -1,1 +1,100 @@
-  
+/* Main container setup with horizontal layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    gap: 20px;
+}
+
+/* Content wrapper for left and right sections */
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+/* Left container for Title and Glossary */
+.left-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Right container for Transcript */
+.right-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Transcript styling */
+.transcript-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Title component styling */
+.title-container {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+/* Glossary styling */
+.glossary-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Evidence styling positioned below */
+.evidence-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual evidence items */
+.evidence-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: calc(50% - 10px);
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-container,
+    .right-container {
+        width: 100%;
+    }
+
+    .evidence-item {
+        width: 100%;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import AudioListener from "../../../../components/Audio/AudioListener";
 import "./Evidence.css";
 
 const Evidence = () => {
@@ -9,7 +10,6 @@ const Evidence = () => {
         const fetchDefinition = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/get_images`);
-                console.log(response.data); // Check the structure of response data
                 
                 // Transform the object to an array format [{filename, description}]
                 const imageArray = Object.entries(response.data).map(([filename, description]) => ({
@@ -32,6 +32,7 @@ const Evidence = () => {
                     <div className="image-item" key={index}>
                         <img src={`http://localhost:5000/api/get_image/${image.filename}`} alt={image.description} />
                         <p>{image.description}</p>
+                        <AudioListener text={image.description} />
                     </div>
                 ))
             ) : (
