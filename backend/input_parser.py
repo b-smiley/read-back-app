@@ -29,17 +29,19 @@ class Segment:
         }
 
 class Actor:
-    def __init__(self, name, speech, index, descriptors):
+    def __init__(self, name, speech=None, index=None, descriptors=None):
         self.name = name
-        self.speech = Segment(speech, index)
-        self.descriptors = descriptors
+        # If speech is provided, ensure it's a list of Segment objects
+        self.speech = [] if speech is None else [speech] if isinstance(speech, Segment) else [Segment(speech, index)]
+        self.descriptors = descriptors if descriptors is not None else []
     
     def to_dict(self):
         return {
             'name': self.name,
-            'speech': self.speech.to_dict(),
+            'speech': [segment.to_dict() for segment in self.speech],  # Convert list of Segment objects to dicts
             'descriptors': self.descriptors
         }
+
 
 
 actors = []
@@ -83,17 +85,20 @@ def generate_words(input_file):
 
     start_index = 0
     curr_index = 1
+    global segment
     for char in text:
         segment += char  # Add character to the current segment
         if char in {'.', '?', '!', '\n', ')'}:  # Check if the character is a delimiter
             saved_text.append(segment)  # Append the complete segment to saved_text
             yield segment  # Send the full segment
-            segment = ""  # Reset the segment collector
             identify_word(start_index)
+            segment = ""  # Reset the segment collector
             start_index = curr_index
         curr_index += 1
-        time.sleep(0.01)  # Control the rate (6000 characters per minute)
+        time.sleep(0.001)  # Control the rate (6000 characters per minute)
 
+    for actor in actors:
+        print(f"actor: {actor.name}")
     identify_word(start_index)
     # Append any remaining segment after the loop ends
     if segment:
@@ -103,36 +108,51 @@ def generate_words(input_file):
     for actor in actors:
         if actor.speech is None:
             actors.remove(actor)
+    
+       
+    print(f"Actors before writing: {[type(actor) for actor in actors]}")
 
-    with open('actors.json', 'w') as f:
-        json.dump([actor.to_dict() for actor in actors], f, indent=4)
+    try:
+        with open('./data/actors.json', 'w') as f:
+            json.dump([actor.to_dict() for actor in actors], f, indent=4)
+    except Exception as e:
+        print(f"Error writing to actors.json: {e}")
 
 
 
 def identify_word(index):
-    if not segment:
-        #empty boi
-        return
+    global segment
 
+    #print(f"identifying word {index}, {segment}")
+    global actors
+    global current_actor
+    
+    if not segment or segment == "\n" or not any(char.isalnum() for char in segment):
+        # Empty segment, return
+        return
+    
     only_letters = ''.join([char for char in segment if char.isalpha()])
-    if(only_letters.isupper()):
-        #This is a subject/person
+    
+    if(only_letters.isupper()):  # This is a subject/person
+        print("Found name")
         subject = only_letters
 
-        for actor in actors:
-            if subject in actor.name:
-                current_actor = actor
-                break
-            current_actor = Actor("", subject, index, "")
+        # Check if the actor already exists, otherwise create a new one
+        existing_actor = next((actor for actor in actors if subject in actor.name), None)
+        if existing_actor:
+            current_actor = existing_actor
+        else:
+            current_actor = Actor(subject, [], index, [])
             actors.append(current_actor)
-        
-        return
 
-    elif(segment[0] == "(" and segment[-1] == ")"):
-        current_actor.descriptor.append(segment)
         return
-    else:
-        current_actor.speech.append(Segment(segment, index))
+ 
+    elif(segment[0] == "(" and segment[-1] == ")"):  # Descriptor
+        current_actor.descriptors.append(segment)
+        return
+    else:  # Otherwise, treat it as a speech segment
+        current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
+
 
 
 
