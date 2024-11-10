@@ -1,77 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CategoriesList.css';
 
 function CategoriesList() {
-  const [openCategory, setOpenCategory] = useState(null); // State to track the open category
-  const [categories, setCategories] = useState({
-    evidence: [],
-    witnesses: [],
-    testimonies: []
-  });
+  const [selectedPerson, setSelectedPerson] = useState(null); 
+  const [people, setPeople] = useState([]);
 
-  /* TEST API CALL
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Simulate receiving new evidence from the backend
-      const newEvidence = {
-        id: `evidence-${Math.floor(Math.random() * 1000)}`,
-        label: `Evidence ${Math.floor(Math.random() * 100)}`
-      };
+    const fetchPeopleData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/names'); 
+        const data = await response.json();
+        
+        // Format the data and set state
+        const formattedPeople = data.map(person => ({
+          name: person.name,
+          speech: person.speech.map(speech => ({
+            content: speech.content,
+            index: speech.index,
+            length: speech.length,
+          })),
+        }));
 
-      // Add the new evidence to the state
-      setCategories((prevCategories) => ({
-        ...prevCategories,
-        evidence: [...prevCategories.evidence, newEvidence]
-      }));
-    }, 5000); // Simulate receiving new evidence every 5 seconds
+        setPeople(formattedPeople); // Update data
+      } catch (error) {
+        console.error('Error fetching people data:', error);
+      }
+    };
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-  */
+    fetchPeopleData(); // Fetch data when the component mounts
 
+  }, []); 
 
-  //Handle the click event to open or close a category
-  const toggleCategory = (categoryName) => {
-    setOpenCategory(openCategory === categoryName ? null : categoryName);
+  const handleItemClick = (personName) => {
+    if (selectedPerson && selectedPerson.name === personName) {
+      setSelectedPerson(null); // Deselect if the same person is clicked again
+      document.body.classList.remove('greyed-out');
+    } else {
+      const person = people.find(p => p.name === personName);
+      if (person) {
+        setSelectedPerson(person); // Show details of selected person
+        document.body.classList.add('greyed-out');
+      }
+    }
   };
 
-  //Handle the click event for an item to scroll to its section (Might need to change)
-  const handleItemClick = (itemId) => {
-    const element = document.getElementById(itemId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleClosePopup = () => {
+    setSelectedPerson(null); // Hide the details
+    document.body.classList.remove('greyed-out'); // Remove the greyed-out overlay
   };
 
   return (
     <div className="categories-list">
-      <h1>Categories</h1>
-
-      {/* Iterate over the category names using Object.keys() */}
-      {Object.keys(categories).map((category) => (
-        <div key={category}>
-          <div
-            className="category-title"
-            onClick={() => toggleCategory(category)}
+      {/* List all people */}
+      <ul className="category-items">
+        {people.map((person) => (
+          <li
+            key={person.name}
+            className="category-item"
+            onClick={() => handleItemClick(person.name)}
           >
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </div>
-          {openCategory === category && (
-            <ul className="category-items">
-              {/* Map over the items of the current category */}
-              {categories[category].map((item, index) => (
-                <li
-                  key={index}
-                  className="category-item"
-                  onClick={() => handleItemClick(item.id)}
-                >
-                  {item.label}
-                </li>
+            {person.name}
+          </li>
+        ))}
+      </ul>
+
+      {/* Display the selected person's speech details if they are selected */}
+      {selectedPerson && (
+        <div>
+          <div className="greyed-out" onClick={handleClosePopup}></div>
+          <div className="person-details-box">
+            <button className="close-btn" onClick={handleClosePopup}>X</button>
+            <div className="speech-details">
+              {selectedPerson.speech.map((item, index) => (
+                <div key={index} className="speech-item">
+                  <p><strong>Speech #{index + 1}</strong>:</p>
+                  <p>{item.content}</p>
+                </div>
               ))}
-            </ul>
-          )}
+            </div>
+          </div>
         </div>
-      ))}
+      )}
     </div>
   );
 }

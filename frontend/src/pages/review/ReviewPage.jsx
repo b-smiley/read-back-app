@@ -4,6 +4,8 @@ import Transcript, {
 } from "../../components/Transcript/Transcript";
 import Glossary from "../../components/Glossary/Glossary";
 import Title from "../../components/Title/Title";
+import CategoriesList from "./review_comp/CategoriesList/CategoriesList";
+
 
 const jsonResponse = await getTranscript();
 function ReviewPage() {
@@ -25,6 +27,7 @@ function ReviewPage() {
         mode={"review"}
         setPosition={setPosition}
       />
+      <CategoriesList />
     </div>
   );
 }
