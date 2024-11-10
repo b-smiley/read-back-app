@@ -1,64 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Glossary.css';
+import axios from 'axios';
 
-export const getGlossary = () => {
-  // TODO ADD ASYNC BACK
-  // try {
-  //   const response = await axios.get("http://localhost:5000/transcript");
-  //   console.log(response);
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(error.message);
-  // }
-  let glossary = "";
-  for (let i = 0; i < 100; i++) {
-    glossary += "Objection: this is a glossary.";
+const fetchDefinition = async (term) => {
+  try {
+    const response = await axios.get(`/api/get_definition_api/${term}`);
+    return response.data.message;
+  } catch (error) {
+    console.error("Error fetching definition:", error.response ? error.response.data.message : error.message);
+    return "Definition not found";
   }
-
-  let json_obj = {
-    glossary: glossary,
-    keywords: [
-      {
-        startIndex: 0,
-        lastIndex: 10,
-      },
-    ],
-  };
-
-  return json_obj;
 };
 
-function Glossary({ selectedWord, glossary, position, hidePopup }) {
-  if (!Array.isArray(glossary)) {
-    console.error('glossary prop should be an array');
-    return null;
-  }
-  
-  const selectedEntry = glossary.find((entry) => entry.word === selectedWord);
+function Glossary({ term }) {
+  const [definition, setDefinition] = useState('');
 
-  if (!selectedEntry) return null;
+  useEffect(() => {
+    const getDefinition = async () => {
+      const def = await fetchDefinition(term);
+      setDefinition(def);
+    };
 
-  const popupWidth = 200;
-  const popupHeight = 150; 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
-
-  const safeX = Math.min(position.x, screenWidth - popupWidth);
-  const safeY = Math.min(position.y, screenHeight - popupHeight);
+    if (term) {
+      getDefinition();
+    }
+  }, [term]);
 
   return (
-    <div
-      className="popup-container"
-      style={{ left: safeX, top: safeY }}
-    >
-      <div className="popup">
-        <button className="close-popup" onClick={hidePopup}>X</button>
-        <h2>{selectedEntry.word}</h2>
-        <p>{selectedEntry.def}</p>
-      </div>
+    <div>
+      <h2>Definition of {term}</h2>
+      <p>{definition}</p>
     </div>
   );
-
 }
+
 
 export default Glossary;
