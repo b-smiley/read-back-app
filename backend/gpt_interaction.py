@@ -52,8 +52,6 @@ def get_legal_explanation_and_usage(term, definition):
         return{"explanation": explanation,
             "usage": usage}
             
-        
-    
     except Exception as e:
         print(response)
         return {"error": str(e)}

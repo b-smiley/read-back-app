@@ -13,6 +13,7 @@ from gpt_interaction import get_legal_explanation_and_usage
 from glossaryModule import get_definition
 from elevenLabModule import get_mp3_file
 import traceback
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -51,7 +52,7 @@ def saved_text_route():
 def send_names():
     try:
         # Open and read the JSON file (make sure it's a valid JSON file)
-        with open("./data/actors.java", "r") as file:
+        with open("./data/actors.json", "r") as file:
             data = json.load(file)
         return jsonify(data)
     except Exception as e:
@@ -114,6 +115,7 @@ def get_gpt_response(term):
 
 @app.route("/api/clear_cache", methods=["POST"])
 def clear_cache():
+    print("Clearing Cache")
     try:
         with open(CACHE_FILE, "w") as file:
             json.dump({}, file)  # write an empty file to the cache location
