@@ -27,7 +27,7 @@ function Glossary({ selectedWord, position, setSelectedWord }) {
   }, [selectedWord]);
 
   useEffect(()=>{
-    console.log("Hello?");
+    console.log("Cache Cleared");
     axios.post(`http://localhost:5000/api/clear_cache`);
   },[])
   
