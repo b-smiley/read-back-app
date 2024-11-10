@@ -1,7 +1,6 @@
 import os
 import json
 
-
 CACHE_FILE = './data/termsUsageExplanations.json'
 
 def load_cache():
@@ -28,6 +27,7 @@ def get_cached_data(term):
         None: the term was not in the cache
     '''
     cache = load_cache()
+    print(term)
     if term in cache:
         cached_entry = cache[term]
         return cached_entry
@@ -36,4 +36,4 @@ def get_cached_data(term):
 def add_to_cache(term, entry):
     cache = load_cache()
     cache[term] = entry
-    save_cache()
+    save_cache(cache)

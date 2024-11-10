@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, app
 
 import os
 import json
-from cacheModule import get_cached_data, CACHE_FILE
+from cacheModule import get_cached_data, CACHE_FILE, add_to_cache
 from glossaryModule import get_definition
 from gpt_interaction import get_legal_explanation_and_usage
 
@@ -32,6 +32,8 @@ def get_gpt_response(term):
     #generate response
     new_entry = json.dumps(get_legal_explanation_and_usage(term, definition))
     #add to cache
+    add_to_cache(term, new_entry)
+
     return jsonify({"source":"request", "data": new_entry}), 200
 
 
