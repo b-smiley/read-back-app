@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Transcript, { getTranscript } from "../../components/Transcript/Transcript";
 import Glossary from "../../components/Glossary/Glossary";
+import NavBar from "../../components/NavBar/NavBar";
+import CategoriesList from "./review_comp/CategoriesList/CategoriesList";
 
 const jsonResponse = getTranscript();
 
@@ -10,6 +12,7 @@ function ReviewPage() {
 
   return (
     <div className="app-container">
+      <NavBar />
       <Glossary selectedWord={selectedWord} position={position} setSelectedWord={setSelectedWord} />
       <Transcript
         setSelectedWord={setSelectedWord}
@@ -18,6 +21,7 @@ function ReviewPage() {
         mode={"review"}
         setPosition={setPosition}
       />
+      <CategoriesList />
     </div>
   );
 }
