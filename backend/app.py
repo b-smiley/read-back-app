@@ -13,12 +13,7 @@ def hello():
 CACHE_FILE = './data/termsUsageExplanations.json'
 DEFINITION_FILE = './data/termsGlossary.json'
 
-def load_cache():
-    # load the cache on the machine
-    if os.path.exists(CACHE_FILE):
-        with open(CACHE_FILE, 'r') as file:
-            return json.load(file)
-    return {}
+
 
 def save_cache(cache_data):
     # update the cache with a new version
@@ -36,10 +31,12 @@ def get_cached_data(term):
         JSON: the JSON data assosciated with the gpt entries of the term
         None: the term was not in the cache
     '''
-    cache = load_cache()
+    with open(CACHE_FILE, 'r') as file:
+        cache = json.load(file)
+
     if term in cache:
-        cached_entry = cache[term]
-        return cached_entry[term]
+        cached_data = cache[term]
+        return cached_data
     return None
 
 def get_definition(term):
@@ -56,9 +53,10 @@ def get_definition(term):
     #open the file for reading
     with open(DEFINITION_FILE, 'r') as file:
         #check if the term is in the file
-        if term in file:
+        termList = json.load(file)
+        if term in termList:
             #return the definition
-            entry = file[term]
+            entry = termList[term]
             return entry['definition']
         return None
 
@@ -67,21 +65,28 @@ def get_definition(term):
 def get_gpt_response(term):
     try:
         termJSON = get_cached_data(term)
-        if termJSON:
-            #term in cache
-            return jsonify({"source":"cache","data": termJSON}), 200
-        #term not in cache
-        #generate gpt response
-        definition = get_definition(term)
-        new_entry = json.dumps(get_legal_explanation_and_usage(term, definition))
-        #add to cache
-        cache = load_cache()
-        cache[term] = new_entry
-        #save updated cache
-        save_cache(cache)
-        return jsonify({"source":"request", "data": new_entry}), 200
     except:
         return jsonify({"message": "Couldn't open file"}), 400
+    
+    if termJSON:
+        #term in cache
+        return jsonify({"source":"cache","data": termJSON}), 200
+    #term not in cache
+    
+    #find definition
+    definition = get_definition(term)
+    if definition == None:
+        return jsonify({"message": "Term not found"}), 400
+
+    #generate response
+    new_entry = json.dumps(get_legal_explanation_and_usage(term, definition))
+    #add to cache
+    cache = load_cache()
+    cache[term] = new_entry
+    #save updated cache
+    save_cache(cache)
+    return jsonify({"source":"request", "data": new_entry}), 200
+    
 
 @app.route('/api/clear_cache', methods=['POST'])
 def clear_cache():
@@ -96,8 +101,11 @@ def clear_cache():
 @app.route('/api/get_definition_api/<string:term>', methods=['GET'])
 def get_definition_api(term):
     try:
+        #returns string containing definition
         definition = get_definition(term)
-        return jsonify({"message": "bruh"}), 200
+        if definition == None:
+            return jsonify({"message": "Term not in glossary"}), 400
+        return jsonify({"message": definition}), 200
     except:
         return jsonify({"message": "Couldn't open file"}), 400
 
