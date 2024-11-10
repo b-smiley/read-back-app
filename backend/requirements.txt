@@ -1,0 +1,5 @@
+Flask
+flask_cors
+openai == 1.10.0
+secure
+requests
