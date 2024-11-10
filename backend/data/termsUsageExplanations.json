@@ -1,1 +1,6 @@
-{"recidivism": "{\"explanation\": \"Recidivism refers to the likelihood of someone repeating a specific behavior, particularly criminal behavior, after they have already been involved in it once.\", \"usage\": \"The judge considered the defendant's high recidivism rate when determining the length of the prison sentence for the current offense.\"}", "rowbotham": "{\"error\": \"list index out of range\"}"}
+{
+    "charge": {
+        "explanation": "In legal terms, a charge is a formal accusation that someone has committed a crime. It is the first step taken before the case goes to court.",
+        "usage": "The police arrested the suspect and later filed a charge of theft against him."
+    }
+}

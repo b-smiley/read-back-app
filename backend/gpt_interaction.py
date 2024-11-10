@@ -1,7 +1,7 @@
 import openai
 from secure import OPENAI_API_KEY
 # print(openai.__version__)
-
+import traceback
 # Set your API key here
 openai.api_key = OPENAI_API_KEY
 
@@ -18,7 +18,7 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] \\nUsage: [example sentence here]"
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\'\\n\'Usage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by one \'\\n\' and for the data to come after the \':\' in each line."
 
     try:
         # Use the new chat method with gpt-3.5-turbo
@@ -31,7 +31,7 @@ def get_legal_explanation_and_usage(term, definition):
 					"content": prompt
 				}
 			],
-			max_tokens=200
+			max_tokens=400
 		)
         
         # Process the response to extract explanation and usage
@@ -43,17 +43,20 @@ def get_legal_explanation_and_usage(term, definition):
 
         # Split the input into lines and extract each section
         lines = response.split("\n")
+        # Remove empty lines
+        lines = [line for line in lines if line.strip() != ""]
         explanation = lines[0].split(":", 1)[1].strip()  # Get text after "Explanation:"
         usage = lines[1].split(":", 1)[1].strip()  # Get text after "Usage:"
         
         # Return the parsed response as a dictionary
-        return {
-            "explanation": explanation,
-            "usage": usage
-        }
+        return{"explanation": explanation,
+            "usage": usage}
+            
+        
     
     except Exception as e:
+        print(response)
         return {"error": str(e)}
 
-json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
-print(json)
+#json = get_legal_explanation_and_usage("brief service", "Refers to the provision of legal advice, information, or any other type of minimal legal service to an individual, such as making a telephone call or drafting a letter on behalf of a client.")
+#print(json)
