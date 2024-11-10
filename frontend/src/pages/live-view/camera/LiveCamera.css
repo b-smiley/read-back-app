@@ -1,0 +1,9 @@
+.live-camera {
+  height: 500px;
+  width: 500px;
+  margin: 20px;
+}
+
+.live-camera video {
+  border-radius: 10px;
+}
