@@ -30,7 +30,12 @@ export const getTranscript = () => {
   return json_obj;
 };
 
-function Transcript({ transcript = "", keywords = [], mode = "" }) {
+function Transcript({
+  setSelectedWord,
+  transcript = "",
+  keywords = [],
+  mode = "",
+}) {
   const generateInteractiveText = () => {
     let segments = [];
     let lastIndex = 0;
@@ -70,7 +75,7 @@ function Transcript({ transcript = "", keywords = [], mode = "" }) {
           <button
             key={index}
             className="transcript-button"
-            onClick={() => alert(`Keywor Clicked: ${segment.content}`)}
+            onClick={() => setSelectedWord(segment.content)}
           >
             {segment.content}
           </button>
