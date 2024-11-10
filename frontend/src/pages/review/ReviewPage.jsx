@@ -6,7 +6,7 @@ import "./ReviewPage.css";
 import Glossary from "../../components/Glossary/Glossary";
 import Title from "../../components/Title/Title";
 import CategoriesList from "./review_comp/CategoriesList/CategoriesList";
-import StreamingComponent from '../../StreamingComponent';
+import StreamingComponent from "../../StreamingComponent";
 import Evidence from "./review_comp/evidence/Evidence";
 
 const jsonResponse = await getTranscript();
@@ -20,6 +20,7 @@ function ReviewPage() {
       <div className="panels">
         <div className="left">
           <CategoriesList />
+          <Evidence />
         </div>
         <div className="right">
           <Glossary
@@ -34,6 +35,7 @@ function ReviewPage() {
             mode={"review"}
             setPosition={setPosition}
           />
+          {/* <StreamingComponent /> */}
         </div>
       </div>
     </div>

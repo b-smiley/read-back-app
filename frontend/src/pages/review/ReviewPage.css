@@ -8,9 +8,10 @@
 }
 
 .review-page .panels .left {
-  width: 70%;
+  width: 50%;
+  display: flex;
 }
 .review-page .panels .right {
-  width: 30%;
+  width: 50%;
   margin: 20px;
 }
