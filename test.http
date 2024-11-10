@@ -1,0 +1,9 @@
+POST http://127.0.0.1:5000/api/clear_cache
+
+###
+
+GET http://127.0.0.1:5000/api/get_gpt_response/charge
+
+###
+
+GET http://127.0.0.1:5000/api/get_definition_api/tariff

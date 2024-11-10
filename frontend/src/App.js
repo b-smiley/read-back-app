@@ -1,30 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import StreamingComponent from './StreamingComponent';
 
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import ReviewPage from "./pages/review/ReviewPage";
+import LivePage from "./pages/live/LivePage";
 function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <main>
-                <StreamingComponent filename = "input_text.txt" />
-            </main>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<ReviewPage />} />
+          <Route path="/live" element={<LivePage />} />
+          <Route path="*" element={<ReviewPage />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
