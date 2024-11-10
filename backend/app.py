@@ -60,5 +60,14 @@ def get_definition_api(term):
     except:
         return jsonify({"message": "Couldn't open file"}), 400
 
+@app.route('/api/generate_text_to_speech/<string:text>', methods=['GET'])
+def generate_text_to_speech(text):
+    try:
+        return
+    except:
+        return
+        
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
