@@ -68,14 +68,9 @@
                 "length": 28
             },
             {
-                "content": "Testimony and Notes of Evidence, taken in the above-entitled and -numbered cause, before the HON.",
+                "content": "Testimony and Notes of Evidence, taken in the above-entitled and -numbered cause, before the HON. JOHN JUSTICE, Judge, presiding on the 7th day of May, 2014.",
                 "index": 173,
                 "length": 97
-            },
-            {
-                "content": " JOHN JUSTICE, Judge, presiding on the 7th day of May, 2014.",
-                "index": 270,
-                "length": 60
             }
         ]
     },
@@ -183,14 +178,9 @@
                 "length": 28
             },
             {
-                "content": "Your Honor, I'm going to object.",
+                "content": "Your Honor, I'm going to object. I don't think it's relevant who did the physical detention of the defendant.",
                 "index": 1981,
                 "length": 32
-            },
-            {
-                "content": " I don't think it's relevant who did the physical detention of the defendant.",
-                "index": 2013,
-                "length": 77
             },
             {
                 "content": "The State has no Redirect.",
@@ -198,14 +188,9 @@
                 "length": 26
             },
             {
-                "content": "The State has no further witnesses.",
+                "content": "The State has no further witnesses. Judge, at this time we would offer, file and introduce S- -- for motion purposes only -- S-, which is a copy of the crime lab in this matter showing that the evidence confiscated from the defendant, both the hand-rolled cigar and the nine plastic baggies were each positive for marijuana; and S-, a copy of the defendant's prior conviction.",
                 "index": 2534,
                 "length": 35
-            },
-            {
-                "content": " Judge, at this time we would offer, file and introduce S- -- for motion purposes only -- S-, which is a copy of the crime lab in this matter showing that the evidence confiscated from the defendant, both the hand-rolled cigar and the nine plastic baggies were each positive for marijuana; and S-, a copy of the defendant's prior conviction.",
-                "index": 2569,
-                "length": 341
             },
             {
                 "content": "With that, Judge, the State submits.",
@@ -228,24 +213,14 @@
                 "length": 44
             },
             {
-                "content": "Yes.",
+                "content": "Yes. Mr. Doe is present in court and we're ready for motions.",
                 "index": 982,
                 "length": 4
             },
             {
-                "content": " Mr. Doe is present in court and we're ready for motions.",
-                "index": 986,
-                "length": 57
-            },
-            {
-                "content": "I have no further questions.",
+                "content": "I have no further questions. Thank you.",
                 "index": 2392,
                 "length": 28
-            },
-            {
-                "content": " Thank you.",
-                "index": 2420,
-                "length": 11
             },
             {
                 "content": "Not for motion purposes.",
@@ -273,23 +248,13 @@
                 "length": 48
             },
             {
-                "content": "Very well.",
+                "content": "Very well. Call your first witness.",
                 "index": 1056,
                 "length": 10
             },
             {
-                "content": " Call your first witness.",
-                "index": 1066,
-                "length": 25
-            },
-            {
-                "content": "I will permit it.",
+                "content": "I will permit it. I will overrule.",
                 "index": 2103,
-                "length": 17
-            },
-            {
-                "content": " I will overrule.",
-                "index": 2120,
                 "length": 17
             },
             {
@@ -298,13 +263,8 @@
                 "length": 80
             },
             {
-                "content": "Thank you, Officer.",
+                "content": "Thank you, Officer. You may step down.",
                 "index": 2483,
-                "length": 19
-            },
-            {
-                "content": " You may step down.",
-                "index": 2502,
                 "length": 19
             },
             {
@@ -323,14 +283,9 @@
                 "length": 10
             },
             {
-                "content": "The Court finds probable cause as charged.",
+                "content": "The Court finds probable cause as charged. The Court denies the Motion to Suppress Evidence.",
                 "index": 3188,
                 "length": 42
-            },
-            {
-                "content": " The Court denies the Motion to Suppress Evidence.",
-                "index": 3230,
-                "length": 50
             },
             {
                 "content": " I will note an objection on behalf of the Defense to the Court's ruling.",
@@ -343,14 +298,9 @@
         "name": "THEWITNESS",
         "speech": [
             {
-                "content": "Sure, I will take a look.",
+                "content": "Sure, I will take a look. Yes.",
                 "index": 2232,
                 "length": 25
-            },
-            {
-                "content": " Yes.",
-                "index": 2257,
-                "length": 5
             },
             {
                 "content": " In the report it says that I notified him he was under arrest, and read him his rights per Miranda, and arrested him.",
@@ -363,24 +313,14 @@
         "name": "REPORTERSPAGE",
         "speech": [
             {
-                "content": "I, JOE REPORTER, Certified Court Reporter in and for the State of Louisiana, the officer, as defined in Rule of the Federal Rules of Civil Procedure and/or Article (B)",
+                "content": "I, JOE REPORTER, Certified Court Reporter in and for the State of Louisiana, the officer, as defined in Rule of the Federal Rules of Civil Procedure and/or Article (B) of the Louisiana Code of Civil Procedure, before whom this proceeding was taken, do hereby state on the Record:\n",
                 "index": 3372,
                 "length": 167
             },
             {
-                "content": " of the Louisiana Code of Civil Procedure, before whom this proceeding was taken, do hereby state on the Record:\n",
-                "index": 3539,
-                "length": 113
-            },
-            {
-                "content": "That due to the interaction in the spontaneous discourse of this proceeding, dashes (--)",
+                "content": "That due to the interaction in the spontaneous discourse of this proceeding, dashes (--) have been used to indicate pauses, changes in thought, and/or talkovers; that same is the proper method for a Court Reporter's transcription of proceeding, and that the dashes (--)",
                 "index": 3653,
                 "length": 88
-            },
-            {
-                "content": " have been used to indicate pauses, changes in thought, and/or talkovers; that same is the proper method for a Court Reporter's transcription of proceeding, and that the dashes (--)",
-                "index": 3741,
-                "length": 181
             },
             {
                 "content": " do not indicate that words or phrases have been left out of this transcript;\n",

@@ -146,7 +146,11 @@ def identify_word(index):
             current_actor = Actor(subject, [], index, [])
             actors.append(current_actor)
     else:  # Otherwise, treat it as a speech segment
-        current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
+        #current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
+        if(index == current_actor.speech[-1].index + current_actor.speech[-1].length and current_actor.speech[-1].content[-1] != "\n"):
+            current_actor.speech[-1].content += segment
+        else: 
+            current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
 
 
 
