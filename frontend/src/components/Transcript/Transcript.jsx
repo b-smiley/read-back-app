@@ -30,7 +30,12 @@ export const getTranscript = () => {
   return json_obj;
 };
 
-function Transcript({ transcript = "", keywords = [], mode = "" }) {
+function Transcript({
+  setSelectedWord,
+  transcript = "",
+  keywords = [],
+  mode = "",
+}) {
   const generateInteractiveText = () => {
     let segments = [];
     let lastIndex = 0;
@@ -47,13 +52,13 @@ function Transcript({ transcript = "", keywords = [], mode = "" }) {
       // Push the keyword as a button
       segments.push({
         type: "button",
-        content: transcript.slice(keyword.startIndex, keyword.endIndex),
+        content: transcript.slice(keyword.startIndex, keyword.lastIndex),
         startIndex: keyword.startIndex,
-        endIndex: keyword.endIndex,
+        lastIndex: keyword.lastIndex,
       });
 
       // Update the completed portion
-      lastIndex = keyword.endIndex;
+      lastIndex = keyword.lastIndex;
     });
     // Add the remaining text after the last keyword
     if (lastIndex < transcript.length) {
@@ -70,7 +75,7 @@ function Transcript({ transcript = "", keywords = [], mode = "" }) {
           <button
             key={index}
             className="transcript-button"
-            onClick={() => alert(`Keywor Clicked: ${segment.content}`)}
+            onClick={() => setSelectedWord(segment.content)}
           >
             {segment.content}
           </button>
