@@ -1,1 +1,6 @@
-{}
+{
+    "defendant": {
+        "explanation": "A defendant is someone who is being accused of a crime in a court case or a person being sued in a civil case.",
+        "usage": "The defendant pleaded not guilty to the charges brought against him in the criminal trial."
+    }
+}

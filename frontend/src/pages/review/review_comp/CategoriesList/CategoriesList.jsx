@@ -69,7 +69,7 @@ function CategoriesList() {
         <div>
           <div className="greyed-out" onClick={handleClosePopup}></div>
           <div className="person-details-box">
-            <h3>{selectedPerson.name}</h3>
+            <h3>Transcript of {selectedPerson.name}</h3>
             <button className="close-btn" onClick={handleClosePopup}>
               X
             </button>
