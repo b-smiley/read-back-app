@@ -18,7 +18,7 @@ def get_legal_explanation_and_usage(term, definition):
     """
     
     # Prepare the prompt with term and definition
-    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: Explanation: [explanation here] \\nUsage: [example sentence here]"
+    prompt = f"Term: {term}\nDefinition: {definition}\n\nProvide a further explanation of this legal term in simpler language and give an example sentence using it. The response should be in the format: \n```Explanation: [explanation here]\nUsage: [example sentence here]```. Make sure to return the data exactly like this as it is parsed by a python script that is expecting the Explaination and Usage to be separated by a \'\\n\' and for the data to come after the \':\' in each line."
 
     try:
         # Use the new chat method with gpt-3.5-turbo
