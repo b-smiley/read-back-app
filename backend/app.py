@@ -3,9 +3,7 @@ from flask import Flask, request, jsonify, app
 from flask_cors import CORS
 import os
 import json
-from cacheModule import get_cached_data, CACHE_FILE, add_to_cache
-from glossaryModule import get_definition
-from gpt_interaction import get_legal_explanation_and_usage
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)

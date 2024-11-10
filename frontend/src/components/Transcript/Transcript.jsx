@@ -1,5 +1,5 @@
 import React from "react";
-import "./Transcript.css";
+import './Transcript.css';
 import axios from "axios";
 
 /** Gets the transcript */
@@ -15,52 +15,41 @@ export const getTranscript = () => {
   let transcript = "";
   for (let i = 0; i < 100; i++) {
     transcript += "Objection this is a transcript.";
-  }
-
-  let json_obj = {
-    transcript: transcript,
-    keywords: [
-      {
-        startIndex: 0,
-        lastIndex: 10,
+        endIndex: 6,
       },
+      {
+        startIndex: 15,
+        endIndex: 21,
+      }
     ],
   };
 
   return json_obj;
 };
 
-function Transcript({
-  setSelectedWord,
-  transcript = "",
-  keywords = [],
-  mode = "",
-}) {
+function Transcript({ setSelectedWord, transcript = "", keywords = [], mode = "", setPosition }) {
   const generateInteractiveText = () => {
     let segments = [];
     let lastIndex = 0;
-    debugger;
-    // Iterate over the keywords to find the sections of the transcript
+
     keywords.forEach((keyword, index) => {
-      // Push text before the keyword
       if (keyword.startIndex > lastIndex) {
         segments.push({
           type: "text",
           content: transcript.slice(lastIndex, keyword.startIndex),
         });
       }
-      // Push the keyword as a button
+
       segments.push({
         type: "button",
-        content: transcript.slice(keyword.startIndex, keyword.lastIndex),
+        content: transcript.slice(keyword.startIndex, keyword.endIndex),
         startIndex: keyword.startIndex,
-        lastIndex: keyword.lastIndex,
+        endIndex: keyword.endIndex,
       });
 
-      // Update the completed portion
-      lastIndex = keyword.lastIndex;
+      lastIndex = keyword.endIndex;
     });
-    // Add the remaining text after the last keyword
+
     if (lastIndex < transcript.length) {
       segments.push({
         type: "text",
@@ -68,14 +57,19 @@ function Transcript({
       });
     }
 
-    // Create the component for the segments
     return segments.map((segment, index) => {
       if (segment.type === "button") {
         return (
           <button
             key={index}
             className="transcript-button"
-            onClick={() => setSelectedWord(segment.content)}
+            onClick={(e) => {
+              const rect = e.target.getBoundingClientRect();
+              setPosition({ x: rect.left + window.scrollX, y: rect.top + window.scrollY });
+
+              // If the same word is clicked again, close the glossary
+              setSelectedWord((prev) => (prev === segment.content ? null : segment.content));
+            }}
           >
             {segment.content}
           </button>
@@ -85,6 +79,7 @@ function Transcript({
       }
     });
   };
+
   const renderText = () => {
     // TODO
 
@@ -105,8 +100,9 @@ function Transcript({
   return (
     <div className="transcript">
       <h2>Transcript</h2>
-      <div className="transcript-text">{renderText()}</div>
+      <div className="transcript-text">{generateInteractiveText()}</div>
     </div>
   );
 }
+
 export default Transcript;
