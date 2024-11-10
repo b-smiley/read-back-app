@@ -1,33 +1,37 @@
 import React from "react";
-import './Transcript.css';
+import "./Transcript.css";
 import axios from "axios";
 
 /** Gets the transcript */
 export const getTranscript = () => {
-  // TODO ADD ASYNC BACK
-  // try {
-  //   const response = await axios.get("http://localhost:5000/transcript");
-  //   console.log(response);
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(error.message);
-  // }
   let transcript = "";
   for (let i = 0; i < 100; i++) {
-    transcript += "Objection this is a transcript.";
+    transcript += "charge this is a transcript.";
+  }
+
+  let json_obj = {
+    transcript: transcript,
+    keywords: [
+      {
+        startIndex: 0,
         endIndex: 6,
       },
       {
         startIndex: 15,
         endIndex: 21,
-      }
+      },
     ],
   };
 
   return json_obj;
 };
-
-function Transcript({ setSelectedWord, transcript = "", keywords = [], mode = "", setPosition }) {
+function Transcript({
+  setSelectedWord,
+  transcript = "",
+  keywords = [],
+  mode = "",
+  setPosition,
+}) {
   const generateInteractiveText = () => {
     let segments = [];
     let lastIndex = 0;
@@ -65,10 +69,15 @@ function Transcript({ setSelectedWord, transcript = "", keywords = [], mode = ""
             className="transcript-button"
             onClick={(e) => {
               const rect = e.target.getBoundingClientRect();
-              setPosition({ x: rect.left + window.scrollX, y: rect.top + window.scrollY });
+              setPosition({
+                x: rect.left + window.scrollX,
+                y: rect.top + window.scrollY,
+              });
 
               // If the same word is clicked again, close the glossary
-              setSelectedWord((prev) => (prev === segment.content ? null : segment.content));
+              setSelectedWord((prev) =>
+                prev === segment.content ? null : segment.content
+              );
             }}
           >
             {segment.content}
