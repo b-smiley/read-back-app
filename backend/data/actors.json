@@ -41,6 +41,16 @@
                 "content": "S- Conviction\n",
                 "index": 760,
                 "length": 14
+            },
+            {
+                "content": "S- Crime Lab\n",
+                "index": 747,
+                "length": 13
+            },
+            {
+                "content": "S- Conviction\n",
+                "index": 760,
+                "length": 14
             }
         ]
     },
@@ -51,12 +61,32 @@
                 "content": " 123-456\n",
                 "index": 84,
                 "length": 9
+            },
+            {
+                "content": " 123-456\n",
+                "index": 84,
+                "length": 9
             }
         ]
     },
     {
         "name": "JOHNDOE",
         "speech": [
+            {
+                "content": "Probable Cause Hearing\n",
+                "index": 122,
+                "length": 23
+            },
+            {
+                "content": "Motion to Suppress Evidence\n",
+                "index": 145,
+                "length": 28
+            },
+            {
+                "content": "Testimony and Notes of Evidence, taken in the above-entitled and -numbered cause, before the HON. JOHN JUSTICE, Judge, presiding on the 7th day of May, 2014.",
+                "index": 173,
+                "length": 97
+            },
             {
                 "content": "Probable Cause Hearing\n",
                 "index": 122,
@@ -141,12 +171,32 @@
                 "content": "Cross-Examination by Ms. Jane\n",
                 "index": 694,
                 "length": 30
+            },
+            {
+                "content": "Direct Examination by Ms. Smith\n",
+                "index": 662,
+                "length": 32
+            },
+            {
+                "content": "Cross-Examination by Ms. Jane\n",
+                "index": 694,
+                "length": 30
             }
         ]
     },
     {
         "name": "MSSMITH",
         "speech": [
+            {
+                "content": "Your Honor, the State is ready to proceed with motions in John Doe.",
+                "index": 786,
+                "length": 67
+            },
+            {
+                "content": "The State calls Officer Peter Paul.",
+                "index": 1104,
+                "length": 35
+            },
             {
                 "content": "Your Honor, the State is ready to proceed with motions in John Doe.",
                 "index": 786,
@@ -213,6 +263,16 @@
                 "length": 4
             },
             {
+                "content": "Your Honor, Mary Jane on behalf of John Doe.",
+                "index": 865,
+                "length": 44
+            },
+            {
+                "content": "Yes. Mr. Doe is present in court and we're ready for motions.",
+                "index": 982,
+                "length": 4
+            },
+            {
                 "content": "I have no further questions. Thank you.",
                 "index": 2392,
                 "length": 28
@@ -237,6 +297,16 @@
     {
         "name": "THECOURT",
         "speech": [
+            {
+                "content": "This is the matter of the State versus John Doe.",
+                "index": 922,
+                "length": 48
+            },
+            {
+                "content": "Very well. Call your first witness.",
+                "index": 1056,
+                "length": 10
+            },
             {
                 "content": "This is the matter of the State versus John Doe.",
                 "index": 922,
