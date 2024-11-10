@@ -2,19 +2,17 @@ import React from "react";
 import './Transcript.css';
 import axios from "axios";
 
-/** Gets the transcript */
 export const getTranscript = () => {
-  // TODO ADD ASYNC BACK
-  // try {
-  //   const response = await axios.get("http://localhost:5000/transcript");
-  //   console.log(response);
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(error.message);
-  // }
   let transcript = "";
   for (let i = 0; i < 100; i++) {
-    transcript += "Objection this is a transcript.";
+    transcript += "charge this is a transcript.";
+  }
+
+  let json_obj = {
+    transcript: transcript,
+    keywords: [
+      {
+        startIndex: 0,
         endIndex: 6,
       },
       {
@@ -78,23 +76,6 @@ function Transcript({ setSelectedWord, transcript = "", keywords = [], mode = ""
         return <span key={index}>{segment.content}</span>;
       }
     });
-  };
-
-  const renderText = () => {
-    // TODO
-
-    switch (mode) {
-      case "live":
-        return (
-          <div className="live-transcript">{generateInteractiveText()}</div>
-        );
-      case "review":
-        return (
-          <div className="review-transcript">{generateInteractiveText()}</div>
-        );
-      default:
-        return <div>ERROR</div>;
-    }
   };
 
   return (
