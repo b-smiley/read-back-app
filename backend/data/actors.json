@@ -83,41 +83,6 @@
         "name": "JANESMITHESQ",
         "speech": [
             {
-                "content": "Your Honor, the State is ready to proceed with motions in John Doe.",
-                "index": 786,
-                "length": 67
-            },
-            {
-                "content": "Your Honor, Mary Jane on behalf of John Doe.",
-                "index": 865,
-                "length": 44
-            },
-            {
-                "content": "Yes.",
-                "index": 982,
-                "length": 4
-            },
-            {
-                "content": " Mr.",
-                "index": 986,
-                "length": 4
-            },
-            {
-                "content": " Doe is present in court and we're ready for motions.",
-                "index": 990,
-                "length": 53
-            },
-            {
-                "content": "The State calls Officer Peter Paul.",
-                "index": 1104,
-                "length": 35
-            },
-            {
-                "content": "OFFICER PETER PAUL, Parish Police Department, after having been first duly sworn, did testify as follows:\n",
-                "index": 1141,
-                "length": 106
-            },
-            {
                 "content": " Could you please state your name for the Record?",
                 "index": 1285,
                 "length": 49
@@ -128,29 +93,14 @@
                 "length": 31
             },
             {
-                "content": " Do you see Mr.",
+                "content": " Do you see Mr. Doe in court today?",
                 "index": 1415,
-                "length": 15
-            },
-            {
-                "content": " Doe in court today?",
-                "index": 1430,
-                "length": 20
-            },
-            {
-                "content": "Please let the Record reflect proper in-court identification.",
-                "index": 1519,
-                "length": 61
+                "length": 35
             },
             {
                 "content": " Officer, could you tell the Court in what capacity you were working February, ?",
                 "index": 1610,
                 "length": 80
-            },
-            {
-                "content": "I tender the witness, Judge.",
-                "index": 1775,
-                "length": 28
             },
             {
                 "content": " Officer, you were undercover on February, ?",
@@ -161,66 +111,6 @@
                 "content": " Would it refresh your recollection if you looked at your police report?",
                 "index": 1896,
                 "length": 72
-            },
-            {
-                "content": "Your Honor, I'm going to object.",
-                "index": 1981,
-                "length": 32
-            },
-            {
-                "content": " I don't think it's relevant who did the physical detention of the defendant.",
-                "index": 2013,
-                "length": 77
-            },
-            {
-                "content": "I have no further questions.",
-                "index": 2392,
-                "length": 28
-            },
-            {
-                "content": " Thank you.",
-                "index": 2420,
-                "length": 11
-            },
-            {
-                "content": "The State has no Redirect.",
-                "index": 2444,
-                "length": 26
-            },
-            {
-                "content": "The State has no further witnesses.",
-                "index": 2534,
-                "length": 35
-            },
-            {
-                "content": " Judge, at this time we would offer, file and introduce S- -- for motion purposes only -- S-, which is a copy of the crime lab in this matter showing that the evidence confiscated from the defendant, both the hand-rolled cigar and the nine plastic baggies were each positive for marijuana; and S-, a copy of the defendant's prior conviction.",
-                "index": 2569,
-                "length": 341
-            },
-            {
-                "content": "Not for motion purposes.",
-                "index": 2969,
-                "length": 24
-            },
-            {
-                "content": "With that, Judge, the State submits.",
-                "index": 3006,
-                "length": 36
-            },
-            {
-                "content": "No.",
-                "index": 3091,
-                "length": 3
-            },
-            {
-                "content": "I would submit.",
-                "index": 3129,
-                "length": 15
-            },
-            {
-                "content": "The State submits.",
-                "index": 3157,
-                "length": 18
             }
         ]
     },
@@ -253,24 +143,124 @@
         "name": "DETECTIVEPETERPAUL",
         "speech": [
             {
-                "content": "Direct Examination by Ms.",
+                "content": "Direct Examination by Ms. Smith\n",
                 "index": 662,
-                "length": 25
+                "length": 32
             },
             {
-                "content": " Smith\n",
-                "index": 687,
-                "length": 7
-            },
-            {
-                "content": "Cross-Examination by Ms.",
+                "content": "Cross-Examination by Ms. Jane\n",
                 "index": 694,
+                "length": 30
+            }
+        ]
+    },
+    {
+        "name": "MSSMITH",
+        "speech": [
+            {
+                "content": "Your Honor, the State is ready to proceed with motions in John Doe.",
+                "index": 786,
+                "length": 67
+            },
+            {
+                "content": "The State calls Officer Peter Paul.",
+                "index": 1104,
+                "length": 35
+            },
+            {
+                "content": "OFFICER PETER PAUL, Parish Police Department, after having been first duly sworn, did testify as follows:\n",
+                "index": 1141,
+                "length": 106
+            },
+            {
+                "content": "Please let the Record reflect proper in-court identification.",
+                "index": 1519,
+                "length": 61
+            },
+            {
+                "content": "I tender the witness, Judge.",
+                "index": 1775,
+                "length": 28
+            },
+            {
+                "content": "Your Honor, I'm going to object.",
+                "index": 1981,
+                "length": 32
+            },
+            {
+                "content": " I don't think it's relevant who did the physical detention of the defendant.",
+                "index": 2013,
+                "length": 77
+            },
+            {
+                "content": "The State has no Redirect.",
+                "index": 2444,
+                "length": 26
+            },
+            {
+                "content": "The State has no further witnesses.",
+                "index": 2534,
+                "length": 35
+            },
+            {
+                "content": " Judge, at this time we would offer, file and introduce S- -- for motion purposes only -- S-, which is a copy of the crime lab in this matter showing that the evidence confiscated from the defendant, both the hand-rolled cigar and the nine plastic baggies were each positive for marijuana; and S-, a copy of the defendant's prior conviction.",
+                "index": 2569,
+                "length": 341
+            },
+            {
+                "content": "With that, Judge, the State submits.",
+                "index": 3006,
+                "length": 36
+            },
+            {
+                "content": "The State submits.",
+                "index": 3157,
+                "length": 18
+            }
+        ]
+    },
+    {
+        "name": "MSJANE",
+        "speech": [
+            {
+                "content": "Your Honor, Mary Jane on behalf of John Doe.",
+                "index": 865,
+                "length": 44
+            },
+            {
+                "content": "Yes.",
+                "index": 982,
+                "length": 4
+            },
+            {
+                "content": " Mr. Doe is present in court and we're ready for motions.",
+                "index": 986,
+                "length": 57
+            },
+            {
+                "content": "I have no further questions.",
+                "index": 2392,
+                "length": 28
+            },
+            {
+                "content": " Thank you.",
+                "index": 2420,
+                "length": 11
+            },
+            {
+                "content": "Not for motion purposes.",
+                "index": 2969,
                 "length": 24
             },
             {
-                "content": " Jane\n",
-                "index": 718,
-                "length": 6
+                "content": "No.",
+                "index": 3091,
+                "length": 3
+            },
+            {
+                "content": "I would submit.",
+                "index": 3129,
+                "length": 15
             }
         ]
     },

@@ -84,11 +84,12 @@ def generate_words(input_file):
     for char in text:
         segment += char  # Add character to the current segment
         if char in {'.', '?', '!', '\n', ')'}:  # Check if the character is a delimiter
-            saved_text.append(segment)  # Append the complete segment to saved_text
-            yield segment  # Send the full segment
-            identify_word(start_index)
-            segment = ""  # Reset the segment collector
-            start_index = curr_index
+            if(char != '.' or not segment[-3:-1].lower() in {"ms", "mr"}):
+                saved_text.append(segment)  # Append the complete segment to saved_text
+                yield segment  # Send the full segment
+                identify_word(start_index)
+                segment = ""  # Reset the segment collector
+                start_index = curr_index
         curr_index += 1
         time.sleep(0.001)  # Control the rate (6000 characters per minute)
 
