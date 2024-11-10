@@ -27,17 +27,11 @@
                 "index": 1887,
                 "length": 5
             }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "STATEOFLOUISIANA",
         "speech": [
-            {
-                "content": [],
-                "index": 42,
-                "length": 0
-            },
             {
                 "content": "S- Crime Lab\n",
                 "index": 747,
@@ -48,8 +42,7 @@
                 "index": 760,
                 "length": 14
             }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "NO",
@@ -59,19 +52,7 @@
                 "index": 84,
                 "length": 9
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "SECTIONZ",
-        "speech": [
-            {
-                "content": [],
-                "index": 100,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "JOHNDOE",
@@ -96,19 +77,7 @@
                 "index": 270,
                 "length": 60
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "REPRESENTINGTHESTATEOFLOUISIANA",
-        "speech": [
-            {
-                "content": [],
-                "index": 345,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "JANESMITHESQ",
@@ -253,39 +222,11 @@
                 "index": 3157,
                 "length": 18
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "REPRESENTINGTHEDEFENDANT",
-        "speech": [
-            {
-                "content": [],
-                "index": 428,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "ORLEANSPUBLICDEFENDERS",
-        "speech": [
-            {
-                "content": [],
-                "index": 472,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "JOEREPORTERCCRRPR",
         "speech": [
-            {
-                "content": [],
-                "index": 511,
-                "length": 0
-            },
             {
                 "content": "Certified Court Reporter\n",
                 "index": 4160,
@@ -306,30 +247,7 @@
                 "index": 5167,
                 "length": 32
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "INANDFORTHEPARISHOFORLEANS",
-        "speech": [
-            {
-                "content": [],
-                "index": 558,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "STATEWITNESS",
-        "speech": [
-            {
-                "content": [],
-                "index": 626,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "DETECTIVEPETERPAUL",
@@ -354,19 +272,7 @@
                 "index": 718,
                 "length": 6
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "MS",
-        "speech": [
-            {
-                "content": [],
-                "index": 775,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "THECOURT",
@@ -441,30 +347,7 @@
                 "index": 3280,
                 "length": 73
             }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "BYMS",
-        "speech": [
-            {
-                "content": [],
-                "index": 1269,
-                "length": 0
-            }
-        ],
-        "descriptors": []
-    },
-    {
-        "name": "CROSSEXAMINATION",
-        "speech": [
-            {
-                "content": [],
-                "index": 1805,
-                "length": 0
-            }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "THEWITNESS",
@@ -484,8 +367,7 @@
                 "index": 2262,
                 "length": 118
             }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "REPORTERSPAGE",
@@ -520,8 +402,7 @@
                 "index": 4001,
                 "length": 140
             }
-        ],
-        "descriptors": []
+        ]
     },
     {
         "name": "REPORTERSCERTIFICATE",
@@ -546,7 +427,6 @@
                 "index": 4995,
                 "length": 132
             }
-        ],
-        "descriptors": []
+        ]
     }
 ]

@@ -30,13 +30,11 @@ class Actor:
         self.name = name
         # If speech is provided, ensure it's a list of Segment objects
         self.speech = [] if speech is None else [speech] if isinstance(speech, Segment) else [Segment(speech, index)]
-        self.descriptors = descriptors if descriptors is not None else []
     
     def to_dict(self):
         return {
             'name': self.name,
             'speech': [segment.to_dict() for segment in self.speech],  # Convert list of Segment objects to dicts
-            'descriptors': self.descriptors
         }
 
 
@@ -102,22 +100,18 @@ def generate_words(input_file):
     if segment:
         saved_text.append(segment)
         yield segment
-     
-    for actor in actors:
-        if(len(actor.speech) == 1):
-            actors.remove(actor) 
-            continue
-         
-        for phrase in actor.speech:
-            if(phrase.content == []):
-                actor.speech.remove(phrase)
+      
+    for actor in actors[:]:
+        # Remove any segments with empty content within the speech list
+        actor.speech = [phrase for phrase in actor.speech if phrase.content != []]
 
-        if actor.speech is None:
+        # Remove the actor if both speech and descriptors are empty
+        if len(actor.speech) == 0 :
             actors.remove(actor)
-    
-       
-    print(f"Actors before writing: {[type(actor) for actor in actors]}")
 
+        
+    #print(f"Actors before writing: {[type(actor) for actor in actors]}")
+ 
     try:
         with open('./data/actors.json', 'w') as f:
             json.dump([actor.to_dict() for actor in actors], f, indent=4)
@@ -150,12 +144,6 @@ def identify_word(index):
         else:
             current_actor = Actor(subject, [], index, [])
             actors.append(current_actor)
-
-        return
-  
-    elif(segment[0] == "(" and segment[-1] == ")"):  # Descriptor
-        current_actor.descriptors.append(segment)
-        return
     else:  # Otherwise, treat it as a speech segment
         current_actor.speech.append(Segment(segment, index))  # Append the segment to speech
 
