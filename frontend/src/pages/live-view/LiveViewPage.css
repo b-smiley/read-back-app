@@ -1,0 +1,16 @@
+.live-view-page {
+  background-color: aliceblue;
+}
+.live-view-page .panels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.live-view-page .panels .left {
+  margin-left: 20px;
+}
+
+.live-view-page .panels .right {
+  margin-right: 20px;
+}

@@ -1,31 +1,29 @@
 /* Container for the NavBar */
-.navbar-container {
-    display: flex;
-    justify-content: space-around; /* Space out the links evenly */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333; /* Dark background for the navbar */
-  }
-  
-  /* Styling for each Link */
-  .navbar-container a {
-    color: white;
-    text-decoration: none; /* Remove underline */
-    font-size: 18px;
-    padding: 8px 16px;
-    border-radius: 4px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-  }
-  
-  /* Hover effect for the links */
-  .navbar-container a:hover {
-    background-color: #555; /* Change background color on hover */
-  }
-  
-  /* Active link styling (if needed) */
-  .navbar-container .active-link {
-    background-color: #007BFF; /* Highlight active link with blue */
-    color: white;
-  }
-  
-  
+.navbar {
+  display: flex;
+  justify-content: space-around; /* Space out the links evenly */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333; /* Dark background for the navbar */
+}
+
+/* Styling for each Link */
+.navbar a {
+  color: white;
+  text-decoration: none; /* Remove underline */
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the links */
+.navbar a:hover {
+  background-color: #555; /* Change background color on hover */
+}
+
+/* Active link styling (if needed) */
+.navbar .active-link {
+  background-color: #007bff; /* Highlight active link with blue */
+  color: white;
+}
