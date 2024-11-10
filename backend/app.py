@@ -4,6 +4,9 @@ from flask_cors import CORS
 import os
 import json
 from flask_cors import CORS
+from cacheModule import get_cached_data, add_to_cache, CACHE_FILE
+from gpt_interaction import get_legal_explanation_and_usage
+from glossaryModule import get_definition
 
 app = Flask(__name__)
 CORS(app)
