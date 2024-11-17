@@ -58,5 +58,7 @@ def get_legal_explanation_and_usage(term, definition):
         print(response)
         return {"error": str(e)}
 
-json = get_legal_explanation_and_usage("contract", "A legally binding agreement between two or more parties.")
-print(json)
+if __name__ == "__main__":
+    # Test
+    json = get_legal_explanation_and_usage("detention", "the action of detaining someone or the state of being detained in official custody, especially as a political prisoner.")
+    print(json)
